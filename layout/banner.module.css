@@ -1,0 +1,49 @@
+.banner {
+    padding: 164px 156px 134px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 84px;
+    letter-spacing: 0.005em;
+    color: #222136;
+}
+
+.headerBld {
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 84px;
+    letter-spacing: 0.005em;
+    color: #222136;
+    padding-bottom: 36px;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #4C4B5C;
+    padding-bottom: 36px;
+}
+
+.subHeader {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #9096AE;
+    padding-bottom: 16px;
+}
+
+.wrapperText {
+    max-width: 520px;
+    padding-right: 88px;
+}
+
+.icon {
+    margin-left: 18px;
+    margin-top: 3px;
+}

@@ -1,0 +1,40 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    height: 362px;
+    background: #FAF9FA;
+    box-shadow: -12px -12px 24px #FFFFFF, 12px 12px 24px rgba(180, 193, 213, 0.36);
+    align-items: center;
+    justify-content: center;
+    margin: 0 35px;
+    transition: all .5s ease;
+}
+
+.card:hover {
+    transform: translate3D(0, -1px, 0) scale(1.1);
+    transition: all .4s ease;
+    box-shadow: -12px -12px 24px #FFFFFF, 12px 12px 24px #B4C1D5;
+}
+
+.chart {
+    padding-bottom: 24px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 20px;
+    color: #222136;
+    padding-bottom: 24px;
+}
+
+.text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 184.02%;
+    color: #4C4B5C;
+    padding: 0 48px;
+    text-align: center;
+}

@@ -1,0 +1,22 @@
+* {
+  font-size: 100%;
+  font-family: 'Hanken Grotesk', sans-serif;
+  margin-block-start: 0!important;
+  margin-block-end: 0!important;
+ }
+
+body {
+  margin: 0;
+}
+
+.alice-carousel__dots {
+  display: none;
+}
+
+.alice-carousel__stage-item {
+  width: 288px !important;
+}
+
+.alice-carousel {
+  width: 71% !important;
+}

@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 65px 0;
+    align-items: center;
+}
+
+.header img {
+    max-height: 2.4rem;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav a {
+    padding: 0 16px;
+}
+
+.divider {
+    border-right: 1px solid #4C4B5C;
+}

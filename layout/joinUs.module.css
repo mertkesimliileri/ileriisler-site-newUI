@@ -1,0 +1,49 @@
+.join {
+    padding: 132px 155px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.textWrapper {
+    max-width: 742px;
+    height: 268px;
+    background: #FDFDFD;
+    border: 1px solid #FAF9FA;
+    position: absolute;
+    bottom: 205px;
+    margin-left: 400px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 24px;
+    color: #222136;
+    padding-bottom: 20px;
+    padding-top: 48px;
+    padding-left: 36px;
+}
+
+.text {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #4C4B5C;
+    padding-bottom: 20px;
+    padding-left: 36px;
+}
+
+.box {
+    width: 742px;
+    height: 268px;
+}
+
+.textWrapper button {
+    margin-left: 36px;
+}
+
+.image {
+    margin-left: 270px;
+}

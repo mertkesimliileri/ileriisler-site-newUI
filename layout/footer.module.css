@@ -1,0 +1,62 @@
+.footer {
+    padding: 80px 155px 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    padding-bottom: 62px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-right: 120px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 40px;
+    color: #233049;
+    padding-bottom: 17px;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 17px;
+    color: #233049;
+    font-family: 'Roboto';
+    font-style: normal;
+    padding-bottom: 19px;
+}
+
+.subTitle {
+    font-weight: 600;
+    font-size: 22px;
+    color: #233049;
+    padding-bottom: 28px;
+    padding-top: 10px;
+}
+
+.bottomRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trademark {
+    color: #233049;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.icon {
+    padding: 0 12px;
+    color: #233049;
+}

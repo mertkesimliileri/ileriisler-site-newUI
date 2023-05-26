@@ -1,0 +1,25 @@
+.solutions {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 192px 156px;
+    align-items: center;
+}
+
+.header {
+    font-weight: 500;
+    font-size: 48px;
+    color: #222136;
+    padding-bottom: 72px;
+}
+
+.cardWrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 72px;
+}
+
+.show {
+    font-weight: 500;
+    font-size: 20px;
+}

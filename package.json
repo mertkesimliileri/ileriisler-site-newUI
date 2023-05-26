@@ -9,10 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "^3.11.1",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.3",
+    "i18next": "^22.5.0",
     "next": "13.4.3",
+    "next-i18next": "^13.2.2",
+    "next-sanity": "^4.3.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-alice-carousel": "^2.7.1",
+    "react-dom": "18.2.0",
+    "react-slick": "^0.29.0",
+    "sanity": "^3.11.1",
+    "styled-components": "^5.3.10"
   }
 }
