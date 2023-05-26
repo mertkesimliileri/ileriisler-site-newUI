@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from "./footer.module.css"
-import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF.esm";
-import { FaLinkedinIn } from "@react-icons/all-files/fa/FaLinkedinIn.esm";
-import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter.esm";
-import { TiSocialInstagram } from "@react-icons/all-files/ti/TiSocialInstagram.esm";
-import { FaApple } from "@react-icons/all-files/fa/FaApple.esm";
-import { FaGooglePlay } from "@react-icons/all-files/fa/FaGooglePlay.esm";
-import { FaYoutube } from "@react-icons/all-files/fa/FaYoutube.esm";
+import { GrFacebookOption } from "@react-icons/all-files/gr/GrFacebookOption";
+import { RiLinkedinFill } from "@react-icons/all-files/ri/RiLinkedinFill";
+import { AiOutlineTwitter } from "@react-icons/all-files/ai/AiOutlineTwitter";
+import { AiFillApple } from "@react-icons/all-files/ai/AiFillApple";
+import { TiSocialInstagram } from "@react-icons/all-files/ti/TiSocialInstagram";
+import { RiGooglePlayFill } from "@react-icons/all-files/ri/RiGooglePlayFill";
+import { AiFillYoutube } from "@react-icons/all-files/ai/AiFillYoutube";
 
 
 const Footer = () => {
@@ -50,13 +50,13 @@ const Footer = () => {
                 <p style={{paddingRight:"256px"}} className={styles.trademark}>©Branchsight2020.</p>
                 <p style={{paddingRight:"183px"}} className={styles.trademark}>Privacy Policy  |  Terms & Conditions</p>
                 <div className={styles.wrapper}>
-                    <FaFacebookF className={styles.icon} />
-                    <FaLinkedinIn className={styles.icon} />
-                    <FaTwitter className={styles.icon} />
+                    <GrFacebookOption className={styles.icon} />
+                    <RiLinkedinFill className={styles.icon} />
+                    <AiOutlineTwitter className={styles.icon} />
                     <TiSocialInstagram className={styles.icon} />
-                    <FaApple className={styles.icon} />
-                    <FaGooglePlay className={styles.icon} />
-                    <FaYoutube className={styles.icon} />
+                    <AiFillApple className={styles.icon} />
+                    <RiGooglePlayFill className={styles.icon} />
+                    <AiFillYoutube className={styles.icon} />
                 </div>
             </div>
         </div>
