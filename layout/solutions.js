@@ -1,17 +1,51 @@
 import SolutionsCard from '@/components/solutionsCard'
 import React from 'react'
 import styles from "./solutions.module.css"
+import sanityClient from "../sanity/lib/sanityClient"
+import { useState, useEffect } from 'react'
+import imageUrlBuilder from '@sanity/image-url'
 
 const Solutions = () => {
+
+    const [cardData, setCard] = useState(null);
+    const builder = imageUrlBuilder(sanityClient)
+    const [cardsShow, setCardsShow] = useState(false);
+
+    function urlFor(source) {
+        return builder.image(source)
+    }
+
+    useEffect(() => {
+        sanityClient.fetch(`*[_type == "homeCards"]{
+        card,
+        title,
+        image
+        }`)
+            .then((data) => setCard(data))
+            .catch(console.error);
+    }, [])
+
+    const handleShow = () => {
+        setCardsShow(!cardsShow);
+        console.log(cardsShow)
+    }
+
     return (
         <div className={styles.solutions}>
-            <h1 className={styles.header}>Our Superpowered Digital Solutions</h1>
+           {cardData && cardData.map((post, index) =>
+            <h1 key={index} className={styles.header}>{post.title}</h1>
+            )
+            }
             <div className={styles.cardWrapper}>
-                <SolutionsCard title="Level of Authority" text="Branchsight takes care of time-consuming tasks such as account onsuming tasks such as account " />
-                <SolutionsCard title="Level of Authority" text="Branchsight takes care of time-consuming tasks such as account onsuming tasks such as account " />
-                <SolutionsCard title="Level of Authority" text="Branchsight takes care of time-consuming tasks such as account onsuming tasks such as account " />
+                {cardsShow == false ? cardData && cardData[0].card.slice(0, 3).map((post, index) =>
+                    <SolutionsCard key={index} title={post.title} text={post.text} image={urlFor(post.image.asset._ref).url()} />
+                ) :
+                cardData && cardData[0].card.map((post, index) =>
+                    <SolutionsCard key={index} title={post.title} text={post.text} image={urlFor(post.image.asset._ref).url()} />
+                )
+                }
             </div>
-            <p className={styles.show}>Show More</p>
+            <p onClick={handleShow} className={styles.show}>{cardsShow ? "Show Less" : "Show More"}</p>
         </div>
     )
 }

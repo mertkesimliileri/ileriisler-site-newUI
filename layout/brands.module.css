@@ -8,3 +8,26 @@
 .brands img {
     padding: 0 57px;
 }
+
+@media only screen and (max-width: 992px) {
+   .brands img {
+        padding: 0 36px;
+   }
+
+   .brands {
+        overflow:hidden;
+        overflow-x:scroll;
+        justify-content: space-between;
+        padding: 119px 32px 73px;
+   }
+}
+
+@media only screen and (max-width: 576px) {
+    .brands img {
+        padding: 0 16px;
+   }
+
+   .brands {
+        padding: 53px 37px;
+   }
+}

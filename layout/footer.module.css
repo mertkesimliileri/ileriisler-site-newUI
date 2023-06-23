@@ -19,6 +19,14 @@
     padding-right: 120px;
 }
 
+.mainColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-right: 205px;
+}
+
 .title {
     font-weight: 700;
     font-size: 40px;
@@ -48,15 +56,93 @@
     justify-content: space-between;
 }
 
-.trademark {
+.trademark1 {
     color: #233049;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 17px;
+    padding-right: 256px;
+}
+
+.trademark2 {
+    color: #233049;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    padding-right: 183px;
 }
 
 .icon {
     padding: 0 12px;
     color: #233049;
+}
+
+.mobile {
+    display: flex;
+    flex-direction: column;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+}
+
+.privacy {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
+    padding-bottom: 50px;
+}
+
+.logo img {
+    max-height: 2.4rem;
+    padding-bottom: 32px;
+}
+
+.menu p {
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.03em;
+    color: #222136;
+}
+
+.mobileText {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    color: #233049;
+}
+
+@media only screen and (max-width: 992px) {
+    .footer {
+        padding: 72px 32px 32px;
+        align-items: normal;
+    }
+
+    .mainColumn {
+        padding-right: 150px;
+        align-items: normal;
+    }
+
+    .column {
+        align-items: normal;
+    }
+
+    .trademark1 {
+        padding-right: 90px;
+    }
+
+    .trademark2 {
+        padding-right: 50px;
+    }
+
 }

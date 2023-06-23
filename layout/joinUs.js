@@ -1,25 +1,52 @@
 import React from 'react'
 import styles from "./joinUs.module.css"
 import Image from 'next/image'
-import joinImg from "../public/image 22.png"
 import Button from '@/components/button'
+import sanityClient from "../sanity/lib/sanityClient"
+import { useState, useEffect } from 'react'
+import imageUrlBuilder from '@sanity/image-url'
+import Link from 'next/link'
 
 const JoinUs = () => {
+
+  const [joinData, setJoin] = useState(null);
+  const builder = imageUrlBuilder(sanityClient)
+
+  function urlFor(source) {
+    return builder.image(source)
+  }
+
+    useEffect(() => {
+        sanityClient.fetch(`*[_type == "homeImage"]{
+        title,
+        text,
+        buttonText,
+        image
+        }`)
+            .then((data) => setJoin(data))
+            .catch(console.error);
+    }, [])
+
   return (
     <div className={styles.join}>
+        {joinData && joinData.map((post, index) => 
         <Image 
-        src={joinImg}
+        src={urlFor(post.image.asset._ref).url()}
         alt="join us"
         width={646}
         height={418} 
         className={styles.image}
+        key={index}
         />
+        )}
         <div className={styles.box}></div>
-        <div className={styles.textWrapper}>
-            <p className={styles.title}>Together we make extraordinary impact</p>
-            <p className={styles.text}>Create an  abstraction Create an  abstraction Create an  abstraction Create an  abstraction Create an   Create an  </p>
-            <Button buttonType={4}>Join us</Button>
+        {joinData && joinData.map((post, index) => 
+        <div key={index} className={styles.textWrapper}>
+            <p className={styles.title}>{post.title}</p>
+            <p className={styles.text}>{post.text}</p>
+            <Link href="/careers"><Button buttonType={4}>{post.buttonText}</Button></Link>
         </div>
+        )}
     </div>
   )
 }

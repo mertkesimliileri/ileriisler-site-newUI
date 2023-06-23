@@ -3,17 +3,35 @@ import styles from "./banner.module.css"
 import Button from '@/components/button'
 import { HiOutlineChevronRight } from "@react-icons/all-files/hi/HiOutlineChevronRight";
 import Image from 'next/image';
+import sanityClient from "../sanity/lib/sanityClient"
 import bannerImg from "../public/bannerImg.png"
+import { useState, useEffect } from 'react'
 
 const Banner = () => {
+
+  const [bannerData, setBanner] = useState(null);
+
+  useEffect(() => {
+    sanityClient.fetch(`*[_type == "homeBanner"]{
+    subTitle,
+    text,
+    title,
+    buttonText
+    }`)
+      .then((data) => setBanner(data))
+      .catch(console.error);
+  }, [])
+
   return (
     <div className={styles.banner}>
       <div className={styles.wrapperText}>
-        <p className={styles.subHeader}>Create an abstraction</p>
-        <h2 className={styles.header}>There is no limit</h2>
-        <h1 className={styles.headerBld}>Creative Media</h1>
-        <p className={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, tus venenatis, </p>
-        <Button buttonType={1}>Start explore <HiOutlineChevronRight className={styles.icon} /></Button>
+        {bannerData && bannerData.map((post, index) => <div className={styles.box} key={index}>
+          <p className={styles.subHeader}>{post.subTitle}</p>
+          <h1 className={styles.headerBld}>{post.title}</h1>
+          <p className={styles.text}>{post.text}</p>
+          <Button buttonType={1}>{post.buttonText} <HiOutlineChevronRight className={styles.icon} /></Button>
+        </div>
+        )}
       </div>
       <div className={styles.wrapperImg}>
         <Image

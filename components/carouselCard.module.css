@@ -4,7 +4,6 @@
     max-width: 258px;
     height: 340px;
     background: #FEFEFE;
-    margin: 0 15px !important;
 }
 
 .title {
@@ -24,3 +23,34 @@
     color: #A3A8B3;
     padding: 0 20px;
 }
+
+.card:hover {
+    transform: translate3D(0, -1px, 0) scale(1.1);
+    transition: all .4s ease;
+    box-shadow: -12px -12px 24px #FFFFFF, 12px 12px 24px #B4C1D5;
+}
+
+@media only screen and (max-width: 992px) {
+    .card {
+        height: auto;
+        padding: 40px 0;
+        text-align: left;
+    }
+ }
+ 
+ @media only screen and (max-width: 576px) {
+    
+    .card {
+        width: 130px;
+        height: 142px;
+        padding: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title {
+        padding: 0;
+        text-align: center;
+    }
+    
+ }

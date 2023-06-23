@@ -1,0 +1,163 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1128px;
+    flex-direction: column;
+    margin: auto;
+    padding-top: 448px;
+}
+
+.title {
+    position: absolute;
+    color: white;
+    font-weight: 700;
+    font-size: 56px;
+    top: 236px;
+    left: 156px;
+}
+
+.texts {
+    padding-top: 56px;
+}
+
+.texts h1 {
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 84px;
+    color: #222136;
+    padding-bottom: 40px;
+}
+
+.texts p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #4C4B5C;
+}
+
+.info {
+    background: #343C77;
+    display: flex;
+    justify-content: center;
+    height: 240px;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.box h3 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #FFF;
+    padding-bottom: 16px;
+}
+
+.box p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+
+.line {
+    height: 180px;
+    background: #9096AE;
+    width: 1px;
+}
+
+.infoWrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 611px;
+    align-items: center;
+}
+
+.divider {
+    padding-top: 64px;
+}
+
+.sections {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.first {
+    font-weight: 600;
+    font-size: 20px;
+    color: #222136;
+}
+
+.second {
+    font-weight: 600;
+    font-size: 20px;
+    color: #222136;
+}
+
+@media only screen and (max-width: 992px) {
+    .title {
+        left: 32px;
+        top: 266px;
+    }
+
+    .wrapper {
+        padding: 440px 32px 100px;
+        width: 750px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .title {
+        font-size: 36px;
+    }
+
+    .wrapper {
+        width: 315px;
+    }
+
+    .second {
+        display: none;
+    }
+
+    .texts h1 {
+        font-size: 36px;
+        line-height: 54px;
+    }
+    
+    .texts p {
+        font-size: 16px;
+        line-height: 184.02%;
+    }
+
+    .infoWrapper {
+        flex-direction: column;
+        row-gap: 40px;
+        align-items: normal;
+    }
+
+    .line {
+        width: 100%;
+        height: 1px;
+        margin: auto;
+    }
+
+    .info {
+        padding: 0 32px
+    }
+
+    .box h3 {
+        padding-bottom: 0;
+    }
+
+    .info {
+        height: 352px;
+    }
+}

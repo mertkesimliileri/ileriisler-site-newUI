@@ -11,7 +11,7 @@ import Footer from "@/layout/footer"
 export default function Home() {
   return (
     <div>
-       <Header />
+       <Header navType={1} buttonType={2} />
        <Banner />
        <Brands />
        <Solutions />
@@ -19,7 +19,7 @@ export default function Home() {
        <Carousel />
        <JoinUs />
        <Divider2 />
-       <Footer />
+       <Footer hideColumns={false} />
     </div>
   )
 }

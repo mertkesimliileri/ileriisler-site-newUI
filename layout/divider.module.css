@@ -24,3 +24,30 @@
     max-width: 577px;
     margin-right: 343px;
 }
+
+@media only screen and (max-width: 992px) {
+    .divider {
+        padding: 44px 32px;
+    }
+
+    .textWrapper {
+        max-width: 520px;
+        width: 520px;
+        margin-right: 100px;
+    }
+ }
+ 
+ @media only screen and (max-width: 576px) {
+    .divider {
+        padding: 48px 32px;
+        flex-direction: column;
+        align-items: normal;
+    }
+
+    .textWrapper {
+        max-width: 312px;
+        width: 321px;
+        padding-bottom: 24px ;
+    }
+ 
+ }

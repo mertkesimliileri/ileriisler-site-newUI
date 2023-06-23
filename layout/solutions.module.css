@@ -17,9 +17,38 @@
     display: flex;
     justify-content: center;
     padding-bottom: 72px;
+    flex-wrap: wrap;
+    row-gap: 56px;
+    max-width: 1200px;
 }
 
 .show {
     font-weight: 500;
     font-size: 20px;
+    cursor: pointer;
 }
+
+@media only screen and (max-width: 992px) {
+    .cardWrapper {
+        flex-wrap: nowrap;
+        overflow:hidden;
+        overflow-x:scroll;
+        justify-content: start;
+   }
+
+   .header {
+    margin: auto;
+   }
+
+   .solutions {
+    align-items: inherit;
+    padding: 96px 32px;
+    text-align: center;
+   }
+  }
+  
+  @media only screen and (max-width: 576px) {
+    .solutions {
+        padding: 64px 13px;
+       }
+  }

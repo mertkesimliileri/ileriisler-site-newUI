@@ -1,0 +1,301 @@
+.title {
+    position: absolute;
+    color: white;
+    font-weight: 700;
+    font-size: 56px;
+    top: 236px;
+    left: 156px;
+}
+
+.content {
+    padding: 448px 155px 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1128px;
+}
+
+.sections {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.first {
+    font-weight: 600;
+    font-size: 20px;
+    color: #222136;
+}
+
+.second {
+    font-weight: 600;
+    font-size: 20px;
+    color: #222136;
+}
+
+.contentWrapper {
+    padding-top: 52px;
+    padding-bottom: 80px;
+}
+
+.contentWrapper h1 {
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 84px;
+    padding-bottom: 40px;
+}
+
+.contentWrapper p {
+    font-size: 20px;
+    line-height: 140%;
+    font-weight: 400;
+}
+
+.graphWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 100px 0;
+
+}
+
+.circle {
+    width: 126px;
+    height: 126px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(140.55deg, rgba(216, 235, 255, 0.2) 1.7%, rgba(255, 234, 253, 0.199136) 44%, rgba(254, 255, 218, 0.1979) 103.46%);
+    box-shadow: -9px -9px 16px rgba(255, 255, 255, 0.6);
+    border-radius: 100%;
+    position: relative;
+    z-index: 99;
+}
+
+.mainCircle {
+    width: 126px;
+    height: 126px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, #E7EEF5 100%);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 9px 9px 56px #A3B1C6, -9px -9px 26px rgba(255, 255, 255, 0.9);
+    border-radius: 100%;
+    position: relative;
+    z-index: 99;
+}
+
+.shadowCircle {
+    width: 126px;
+    height: 126px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(208, 232, 255, 0.2) 0%, rgba(249, 249, 213, 0.1979) 51.69%, rgba(255, 215, 253, 0) 105.57%);
+    filter: drop-shadow(9px 9px 16px rgba(163, 177, 198, 0.6));
+    border-radius: 100%;
+    position: relative;
+    z-index: 99;
+}
+
+.circleWrapper {
+    text-align: center;
+    position: relative;
+    z-index: 99;
+}
+
+.circleWrapper p {
+    padding-top: 20px;
+    color: #343C77;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.circleWrapper:nth-child(1):after,
+.circleWrapper:nth-child(3):after {
+    content: url("../public/Vector\ 5.png");
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 25%;
+    transform: rotate(180deg);
+    left: 87%;
+    z-index: 98;
+}
+
+.circleWrapper:nth-child(2):after,
+.circleWrapper:nth-child(4):after {
+    content: url("../public/Vector\ 6.png");
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 25%;
+    transform: rotate(180deg);
+    left: 100%;
+    z-index: 98;
+}
+
+.bottomContent {
+    padding: 100px 155px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1128px;
+}
+
+.bottomText {
+    color: #4C4B5C;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.textWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 0 100px;
+    width: 100%;
+}
+
+.box {
+    max-width: 525px;
+}
+
+.box p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 184.02%;
+    color: #4C4B5C;
+    padding-top: 24px;
+}
+
+.contactWrapper {
+    display: flex;
+    width: 1128px;
+    justify-content: space-between;
+}
+
+.contactText {
+    padding-top: 56px;
+}
+
+.contactText h1 {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    padding-bottom: 20px;
+    color: #FFFFFF;
+}
+
+.contactText p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+@media only screen and (max-width: 992px) {
+
+    .title {
+        left: 32px;
+        top: 266px;
+    }
+
+    .bottomContent {
+        padding: 100px 32px 80px;
+    }
+
+    .content {
+        padding: 440px 32px 100px;
+    }
+
+    .contactWrapper {
+        padding: 56px 32px;
+    }
+
+}
+
+@media only screen and (max-width: 576px) {
+    .content {
+        max-width: 315px;
+    }
+
+    .title {
+        font-size: 36px;
+    }
+
+    .second {
+        display: none;
+    }
+
+    .contentWrapper h1 {
+        font-size: 36px;
+    }
+
+    .contentWrapper p {
+        font-size: 16px;
+        line-height: 184.02%;
+    }
+
+    .circle {
+        width: 72px;
+        height: 72px;
+    }
+
+    .mainCircle {
+        width: 72px;
+        height: 72px;
+    }
+
+    .shadowCircle {
+        width: 72px;
+        height: 72px;
+    }
+
+    .circleWrapper p {
+        font-size: 14px;
+    }
+
+    .graphWrapper {
+        width: auto;
+    }
+
+    .circleWrapper:nth-child(1):after,
+    .circleWrapper:nth-child(3):after {
+        content: url("../public/Vector\ 5c.png");
+        position: absolute;
+        width: auto;
+        height: auto;
+        top: 38%;
+        transform: rotate(144deg);
+        left: -20%;
+        z-index: 98;
+    }
+
+    .circleWrapper:nth-child(2):after,
+    .circleWrapper:nth-child(4):after {
+        content: url("../public/Vector\ 6c.png");
+        position: absolute;
+        width: auto;
+        height: auto;
+        top: 20%;
+        transform: rotate(196deg);
+        left: -33%;
+        z-index: 98;
+    }
+
+    .textWrapper {
+        flex-direction: column;
+        row-gap: 40px;
+    }
+
+    .contactWrapper {
+        flex-direction: column;
+        row-gap: 56px;
+    }
+}

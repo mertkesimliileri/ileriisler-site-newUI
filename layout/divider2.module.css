@@ -21,3 +21,17 @@
     font-size: 20px;
     line-height: 30px;
 }
+
+@media only screen and (max-width: 992px) {
+    .divider {
+        padding: 52px 32px;
+    }
+
+ }
+ 
+ @media only screen and (max-width: 576px) {
+    .divider {
+       align-items: start;
+    }
+ 
+ }

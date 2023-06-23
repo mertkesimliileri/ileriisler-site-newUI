@@ -1,5 +1,4 @@
 import React from 'react'
-import chart from "../public/Chart 3.png"
 import Image from 'next/image'
 import styles from "./solutionsCard.module.css"
 
@@ -7,8 +6,8 @@ const SolutionsCard = (props) => {
   return (
     <div className={styles.card}>
         <Image
-          src={chart}
-          alt="chart"
+          src={props.image}
+          alt="card image"
           width={52}
           height={52}
           className={styles.chart}

@@ -1,0 +1,60 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 551px;
+    padding: 56px 0;
+    row-gap: 24px;
+}
+
+.form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding-bottom: 12px;
+}
+
+.input {
+    background: none;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #FFF;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+    font-family: 'Inter';
+}
+
+.input:focus {
+    outline: none;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 32px;
+    width: 113px;
+    height: 40px;
+    background: #FFFFFF;
+    border: none;
+}
+
+@media only screen and (max-width: 992px) {
+
+    .form {
+        width: 344px;
+    }
+   
+  }
+  
+  @media only screen and (max-width: 576px) {
+    
+  }

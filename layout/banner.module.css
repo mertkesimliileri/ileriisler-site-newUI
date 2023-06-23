@@ -47,3 +47,43 @@
     margin-left: 18px;
     margin-top: 3px;
 }
+
+@media only screen and (max-width: 992px) {
+    .banner {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 104px 32px 72px;
+    }
+
+    .wrapperImg img {
+        height: auto;
+        width: 750px;
+        padding-top: 72px;
+    }
+
+    .wrapperText {
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+
+    .banner {
+        padding: 48px 30px 56px;
+      }
+   
+    .wrapperImg img {
+        height: auto;
+        width: 315px;
+        padding-top: 49px;
+    }
+}
