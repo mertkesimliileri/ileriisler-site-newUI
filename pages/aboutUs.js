@@ -74,6 +74,7 @@ const AboutUs = () => {
                             width={1128}
                             height={482}
                             sizes="100vw"
+                            key={index}
                         />
                     )}
                 </div>

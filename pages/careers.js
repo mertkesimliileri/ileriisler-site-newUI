@@ -119,7 +119,7 @@ const Careers = () => {
                         <button onClick={() => setActive("management")} className={active == "management" ? "active" : "tab"}>Yönetim</button>
                     </div>
                     {careersData && careersData[0].positions.filter(pos => pos.category === active).map((post, index) =>
-                        <div className={styles.positionWrapper}>
+                        <div key={index} className={styles.positionWrapper}>
                             <div className={styles.position}>
                                 <div className={styles.post}>
                                     <p>{post.title}</p>
