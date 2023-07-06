@@ -11,12 +11,18 @@ import { HiChevronRight } from "@react-icons/all-files/hi/HiChevronRight";
 import SanityBlockContent from '@sanity/block-content-to-react'
 import Button from '@/components/button'
 import Footer from '@/layout/footer'
+import { useRouter } from 'next/router'
+import en from '../locales/en'
+import tr from '../locales/tr'
 
 
 const AboutUs = () => {
 
     const [aboutData, setAbout] = useState(null);
     const builder = imageUrlBuilder(sanityClient)
+    const router = useRouter();
+    const {locale} = router;
+    const t = locale === 'en' ? en : tr;
 
     function urlFor(source) {
         return builder.image(source)
@@ -25,10 +31,10 @@ const AboutUs = () => {
     useEffect(() => {
         sanityClient.fetch(`*[_type == "aboutUs"]{
       banner,
-      content1,
-      content2,
-      text,
-      buttonText,
+      "content1" : content1.${locale},
+      "content2" : content2.${locale},
+      "text" : text.${locale},
+      "buttonText" : buttonText.${locale},
       contentImage
       }`)
             .then((data) => setAbout(data))
@@ -54,8 +60,8 @@ const AboutUs = () => {
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <div className={styles.content}>
                     <div className={styles.sections}>
-                        <Link className={styles.first} href="/whatWeDo"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />What we do</Link>
-                        <Link className={styles.second} href="/insights">Insights <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                        <Link className={styles.first} href="/careers"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav4}</Link>
+                        <Link className={styles.second} href="/howWork">{t.nav7} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
                     </div>
                     <div className={styles.contentWrapper}>
                         {aboutData && aboutData.map((post, index) =>

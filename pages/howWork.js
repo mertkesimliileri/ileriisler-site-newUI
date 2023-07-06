@@ -14,10 +14,16 @@ import Footer from '@/layout/footer'
 import ContactForm from '@/components/contactForm';
 import line1 from "../public/Vector 5.png"
 import line2 from "../public/Vector 6.png"
+import { useRouter } from 'next/router';
+import en from '../locales/en'
+import tr from '../locales/tr'
 
 const HowWork = () => {
     const [howWorkData, setHowWork] = useState(null);
     const builder = imageUrlBuilder(sanityClient)
+    const router = useRouter();
+    const {locale} = router;
+    const t = locale === 'en' ? en : tr;
 
     function urlFor(source) {
         return builder.image(source)
@@ -26,22 +32,22 @@ const HowWork = () => {
     useEffect(() => {
         sanityClient.fetch(`*[_type == "howWork"]{
       banner,
-      content,
+      "content" : content.${locale},
       circle1Img,
       circle2Img,
       circle3Img,
       circle4Img,
       circle5Img,
-      circle1Text,
-      circle2Text,
-      circle3Text,
-      circle4Text,
-      circle5Text,
-      text,
-      leftTitle,
-      rightTitle,
-      leftText,
-      rightText,
+      "circle1Text" : circle1Text.${locale},
+      "circle2Text" : circle2Text.${locale},
+      "circle3Text" : circle3Text.${locale},
+      "circle4Text" : circle4Text.${locale},
+      "circle5Text" : circle5Text.${locale},
+      "text" : text.${locale},
+      "leftTitle" : leftTitle.${locale},
+      "rightTitle" : rightTitle.${locale},
+      "leftText" : leftText.${locale},
+      "rightText" : rightText.${locale},
       }`)
             .then((data) => setHowWork(data))
             .catch(console.error);
@@ -62,12 +68,12 @@ const HowWork = () => {
                     />
                 </div>
             )}
-            <h1 className={styles.title}>How do we Work</h1>
+            <h1 className={styles.title}>{t.nav7}</h1>
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <div className={styles.content}>
                     <div className={styles.sections}>
-                        <Link className={styles.first} href="/whatWeDo"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />What we do</Link>
-                        <Link className={styles.second} href="/insights">Insights <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                        <Link className={styles.first} href="/aboutUs"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav5}</Link>
+                        <Link className={styles.second} href="/careers">{t.nav4} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
                     </div>
                     <div className={styles.contentWrapper}>
                         {howWorkData && howWorkData.map((post, index) =>
@@ -175,8 +181,8 @@ const HowWork = () => {
             <div style={{ display: "flex", justifyContent: "center", background: "#6CBA9F" }}>
                 <div className={styles.contactWrapper}>
                     <div className={styles.contactText}>
-                        <h1>Let’s start with one project.</h1>
-                        <p>Contact İlerişler</p>
+                        <h1>{t.start}</h1>
+                        <p>{t.contactİleri}</p>
                     </div>
                     <ContactForm />
                 </div>

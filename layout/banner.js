@@ -6,17 +6,20 @@ import Image from 'next/image';
 import sanityClient from "../sanity/lib/sanityClient"
 import bannerImg from "../public/bannerImg.png"
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router';
 
 const Banner = () => {
 
   const [bannerData, setBanner] = useState(null);
+  const router = useRouter();
+  const {locale} = router;
 
   useEffect(() => {
     sanityClient.fetch(`*[_type == "homeBanner"]{
-    subTitle,
-    text,
-    title,
-    buttonText
+    "subTitle" : subTitle.${locale},
+    "text" : text.${locale},
+    "title" : title.${locale},
+    "buttonText" : buttonText.${locale}
     }`)
       .then((data) => setBanner(data))
       .catch(console.error);

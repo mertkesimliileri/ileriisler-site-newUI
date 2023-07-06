@@ -7,6 +7,9 @@ import { useState, useEffect } from 'react'
 import { RiLightbulbLine } from "@react-icons/all-files/ri/RiLightbulbLine";
 import { BiCube } from "@react-icons/all-files/bi/BiCube";
 import HomeForm from '@/components/homeForm';
+import { useRouter } from 'next/router';
+import en from '../locales/en'
+import tr from '../locales/tr'
 
 const Carousel = () => {
 
@@ -15,23 +18,25 @@ const Carousel = () => {
     const [step, setStep] = useState(1);
     const [firstOption, setFirstOption] = useState(null);
     const [secondOption, setSecondOption] = useState(null);
-
+    const router = useRouter();
+    const {locale} = router;
+    const t = locale === 'en' ? en : tr;
 
     let text;
     const project1 = "Yeni bir proje"
     const project2 = "Mevcut Proje"
 
     if (step === 1) {
-        text = "Ready to make digital superpower?"
+        text = t.homeFormTitle1;
     } else if (step === 2) {
-        text = "Is this a new project?"
+        text = t.homeFormTitle2;
     } else if (step === 3) {
-        text = "İletişim bilgileriniz"
+        text = t.homeFormTitle3;
     }
 
     useEffect(() => {
         sanityClient.fetch(`*[_type == "homeSlider"]{
-        title,
+        "title" : title.${locale},
         item
         }`)
             .then((data) => setCarousel(data))
@@ -54,7 +59,7 @@ const Carousel = () => {
         if (step === 1) {
             return carouselData && carouselData[0].item.map((post, index) =>
                 <button style={{ border: "none", background: "white" }} onClick={() => handleFirstSelection(post.title)} key={index}>
-                    <CarouselCard title={post.title} text={post.text} />
+                    <CarouselCard title={post.title[locale]} text={post.text[locale]} />
                 </button>
             )
         } else if (step === 2) {
@@ -88,7 +93,12 @@ const Carousel = () => {
                 <div className={styles.bar}>
                     <div style={{ width: progress }} className={styles.progress}></div>
                 </div>
-                <p className={styles.step}>Step {step} of 3</p>
+                {locale === "en" ?
+                    <p className={styles.step}>Step {step} of 3</p> 
+                    :
+                    <p className={styles.step}>{step}/3 Aşama</p>
+                }
+                
             </div>
         </div>
     )

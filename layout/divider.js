@@ -4,16 +4,20 @@ import Button from '@/components/button'
 import sanityClient from "../sanity/lib/sanityClient"
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router';
+
 
 const Divider = () => {
 
     const [dividerData, setDivider] = useState(null);
+    const router = useRouter();
+    const {locale} = router;
 
     useEffect(() => {
         sanityClient.fetch(`*[_type == "divider1"]{
-        title,
-        text,
-        buttonText
+        "title" : title.${locale},
+        "text" : text.${locale},
+        "buttonText" : buttonText.${locale},
         }`)
             .then((data) => setDivider(data))
             .catch(console.error);

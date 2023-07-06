@@ -6,11 +6,15 @@ import sanityClient from "../sanity/lib/sanityClient"
 import { useState, useEffect } from 'react'
 import imageUrlBuilder from '@sanity/image-url'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const JoinUs = () => {
 
   const [joinData, setJoin] = useState(null);
   const builder = imageUrlBuilder(sanityClient)
+
+  const router = useRouter();
+  const {locale} = router;
 
   function urlFor(source) {
     return builder.image(source)
@@ -18,9 +22,9 @@ const JoinUs = () => {
 
     useEffect(() => {
         sanityClient.fetch(`*[_type == "homeImage"]{
-        title,
-        text,
-        buttonText,
+        "title" : title.${locale},
+        "text" : text.${locale},
+        "buttonText" : buttonText.${locale},
         image
         }`)
             .then((data) => setJoin(data))

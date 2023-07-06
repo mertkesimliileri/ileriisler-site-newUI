@@ -8,7 +8,19 @@ export default defineConfig({
         {
             title: "Section Title",
             name: "title",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: 'Card',

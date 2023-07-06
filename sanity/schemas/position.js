@@ -8,13 +8,38 @@ export default defineConfig({
         {
             title: "Position Name",
             name: "title",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: 'Position details', 
             name: 'details',
-            type: 'array', 
-            of: [{type: 'block'}]
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                }
+            ]
         },
         {
             title: "Position Category",

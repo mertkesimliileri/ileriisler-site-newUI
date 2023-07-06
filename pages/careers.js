@@ -14,16 +14,21 @@ import { HiChevronRight } from "@react-icons/all-files/hi/HiChevronRight";
 import { FiChevronDown } from "@react-icons/all-files/fi/FiChevronDown";
 import SolutionsCard from '@/components/solutionsCard'
 import Form from "@/components/form";
+import { useRouter } from 'next/router'
+import en from '../locales/en'
+import tr from '../locales/tr'
 
 const Careers = () => {
 
     const [careersData, setCareers] = useState(null);
-    const [cardData, setCard] = useState(null);
     const [showSection, setShowSection] = useState(true);
     const builder = imageUrlBuilder(sanityClient)
     const [active, setActive] = useState("all");
     const [show, setShow] = useState(null);
     const [open, setOpen] = useState(false);
+    const router = useRouter();
+    const {locale} = router;
+    const t = locale === 'en' ? en : tr;
 
     function urlFor(source) {
         return builder.image(source)
@@ -32,24 +37,18 @@ const Careers = () => {
     useEffect(() => {
         sanityClient.fetch(`*[_type == "careers"]{
       banner,
-      content,
-      cardsTitle,
-      cardsText,
-      buttonText,
-      contentButton,
-      text,
+      "content" : content.${locale},
+      "cardsTitle" : cardsTitle.${locale},
+      "cardsText" : cardsText.${locale},
+      "buttonText" : buttonText.${locale},
+      "contentButton" : contentButton.${locale},
+      "text" : text.${locale},
       positions,
-      secondText,
-      secondTitle
+      "secondText" : secondText.${locale},
+      "secondTitle" : secondTitle.${locale},
+      card
       }`)
             .then((data) => setCareers(data))
-            .catch(console.error);
-        sanityClient.fetch(`*[_type == "homeCards"]{
-                card,
-                title,
-                image
-                }`)
-            .then((data) => setCard(data))
             .catch(console.error);
     }, [])
 
@@ -72,14 +71,14 @@ const Careers = () => {
                     />
                 </div>
             )}
-            <h1 className={styles.title}>Careers</h1>
+            <h1 className={styles.title}>{t.nav4}</h1>
             {showSection ?
                 <>
                     <div style={{ display: "flex", justifyContent: "center" }}>
                         <div className={styles.content}>
                             <div className={styles.sections}>
-                                <Link className={styles.first} href="/whatWeDo"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />What we do</Link>
-                                <Link className={styles.second} href="/insights">Insights <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                            <Link className={styles.first} href="/aboutUs"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav5}</Link>
+                            <Link className={styles.second} href="/contact">{t.nav6} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
                             </div>
                             <div className={styles.contentWrapper}>
                                 {careersData && careersData.map((post, index) =>
@@ -101,31 +100,37 @@ const Careers = () => {
                     </div>
                     <div className={styles.cardSection}>
                         <div className={styles.cardWrapper}>
-                            {cardData && cardData[0].card.map((post, index) =>
-                                <SolutionsCard key={index} title={post.title} text={post.text} image={urlFor(post.image.asset._ref).url()} />
+                            {careersData && careersData[0].card.map((post, index) =>
+                                <SolutionsCard key={index} title={post.title[locale]} text={post.text[locale]} image={urlFor(post.image.asset._ref).url()} />
                             )
                             }
                         </div>
                     </div> </> :
                 <div className={styles.positionsWrapper}>
                     <div className={styles.sections}>
-                        <Link className={styles.first} href="/whatWeDo"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />What we do</Link>
-                        <Link className={styles.second} href="/insights">Insights <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                        <Link className={styles.first} href="/aboutUs"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav5}</Link>
+                        <Link className={styles.second} href="/contact">{t.nav6} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
                     </div>
                     <h1>Açık Pozisyonlar</h1>
                     <div className={styles.categories}>
-                        <button onClick={() => setActive("all")} className={active == "all" ? "active" : "tab"}>All</button>
-                        <button onClick={() => setActive("software")} className={active == "software" ? "active" : "tab"}>Yazılım</button>
-                        <button onClick={() => setActive("management")} className={active == "management" ? "active" : "tab"}>Yönetim</button>
+                        <button onClick={() => setActive("all")} className={active == "all" ? "active" : "tab"}>{t.all}</button>
+                        <button onClick={() => setActive("software")} className={active == "software" ? "active" : "tab"}>{t.software}</button>
+                        <button onClick={() => setActive("management")} className={active == "management" ? "active" : "tab"}>{t.management}</button>
                     </div>
                     {careersData && careersData[0].positions.filter(pos => pos.category === active).map((post, index) =>
-                        <div key={index} className={styles.positionWrapper}>
+                        <div key={index} onClick={() => { setShow(index); setOpen(!open) }} style={show === index && open ? { paddingBottom: "40px" } : { paddingBottom: "0" }} className={styles.positionWrapper}>
                             <div className={styles.position}>
                                 <div className={styles.post}>
-                                    <p>{post.title}</p>
-                                    <button>Remote</button>
+                                    <p>{post.title[locale]}</p>
+                                    <button>{t.remote}</button>
                                 </div>
                                 <FiChevronDown />
+                            </div>
+                            <div style={show === index && open ? { display: "block" } : { display: "none" }} className={styles.details}>
+                                <SanityBlockContent blocks={post.details[locale]} />
+                                <div className={styles.buttonWrapper}>
+                                    <button>{t.apply}</button>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -133,15 +138,15 @@ const Careers = () => {
                         <div key={index} onClick={() => { setShow(index); setOpen(!open) }} style={show === index && open ? { paddingBottom: "40px" } : { paddingBottom: "0" }} className={styles.positionWrapper}>
                             <div className={styles.position}>
                                 <div className={styles.post}>
-                                    <p>{post.title}</p>
-                                    <button>Remote</button>
+                                    <p>{post.title[locale]}</p>
+                                    <button>{t.remote}</button>
                                 </div>
                                 <FiChevronDown />
                             </div>
                             <div style={show === index && open ? { display: "block" } : { display: "none" }} className={styles.details}>
-                                <SanityBlockContent blocks={post.details} />
+                                <SanityBlockContent blocks={post.details[locale]} />
                                 <div className={styles.buttonWrapper}>
-                                    <button>Apply</button>
+                                    <button>{t.apply}</button>
                                 </div>
                             </div>
                         </div>

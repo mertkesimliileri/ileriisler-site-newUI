@@ -13,43 +13,112 @@ export default defineConfig({
         {
             title: 'Content', 
             name: 'content',
-            type: 'array', 
-            of: [{type: 'block'}]
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                }
+            ]
         },
         {
-            title: "Cards Title",
-            name: "cardsTitle",
-            type: "string"
-        },
-        {
-            title: "Cards Text",
-            name: "cardsText",
-            type: "string"
+            title: 'Card',
+            name: 'card',
+            type: 'array',
+            of: [{type: 'card'}]
         },
         {
             title: "Content Button Text",
             name: "contentButton",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Divider Text",
             name: "text",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Divider Button Text",
             name: "buttonText",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Second Divider Title",
             name: "secondTitle",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Second Divider Text",
             name: "secondText",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: 'Positions',

@@ -13,8 +13,21 @@ export default defineConfig({
         {
             title: 'Content', 
             name: 'content',
-            type: 'array', 
-            of: [{type: 'block'}]
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                }
+            ]
         },
         {
             title: "Circle 1 image",
@@ -44,52 +57,172 @@ export default defineConfig({
         {
             title: "Circle 1 Text",
             name: "circle1Text",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Circle 2 Text",
             name: "circle2Text",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Circle 3 Text",
             name: "circle3Text",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Circle 4 Text",
             name: "circle4Text",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Circle 5 Text",
             name: "circle5Text",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Bottom Section Main Text",
             name: "text",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Bottom Section Left Title",
             name: "leftTitle",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Bottom Section Left Text",
             name: "leftText",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Bottom Section Right Text",
             name: "rightText",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Bottom Section Right Title",
             name: "rightTitle",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
     ]
 })

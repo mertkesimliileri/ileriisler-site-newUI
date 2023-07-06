@@ -12,16 +12,22 @@ import Image from 'next/image';
 import { HiChevronLeft } from "@react-icons/all-files/hi/HiChevronLeft";
 import { HiChevronRight } from "@react-icons/all-files/hi/HiChevronRight";
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import en from '../locales/en'
+import tr from '../locales/tr'
 
 const Contact = () => {
 
     const [contactData, setContact] = useState(null);
     const builder = imageUrlBuilder(sanityClient);
+    const router = useRouter();
+    const { locale } = router;
+    const t = locale === 'en' ? en : tr;
 
     useEffect(() => {
-        sanityClient.fetch(`*[_type == "contactUs"]{
-        title,
-        text,
+        sanityClient.fetch(`*[_type == "contactUs"]{    
+        "text" : text.${locale},
+        "title" : title.${locale},
         phone,
         mail,
         banner
@@ -49,11 +55,11 @@ const Contact = () => {
                     />
                 </div>
             )}
-            <h1 className={styles.title}>Contact Us</h1>
+            <h1 className={styles.title}>{t.nav6}</h1>
             <div className={styles.wrapper}>
                 <div className={styles.sections}>
-                    <Link className={styles.first} href="/whatWeDo"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />What we do</Link>
-                    <Link className={styles.second} href="/insights">Insights <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                    <Link className={styles.first} href="/howWork"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav7}</Link>
+                    <Link className={styles.second} href="/aboutUs">{t.nav5} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
                 </div>
                 {contactData && contactData.map((post, index) =>
                     <div className={styles.texts} key={index}>
@@ -67,14 +73,14 @@ const Contact = () => {
                 <div className={styles.info}>
                     <div className={styles.infoWrapper}>
                         <div className={styles.box}>
-                            <h3><HiOutlineMail style={{ verticalAlign: "middle", marginRight: "13px" }} />Email address</h3>
+                            <h3><HiOutlineMail style={{ verticalAlign: "middle", marginRight: "13px" }} />{t.email}</h3>
                             {contactData && contactData.map((post, index) =>
                                 <a key={index} href={"mailto:" + post.mail}><p>{post.mail}</p></a>
                             )}
                         </div>
                         <div className={styles.line}></div>
                         <div className={styles.box}>
-                            <h3><BiPhoneCall style={{ verticalAlign: "middle", marginRight: "13px" }} />Phone number</h3>
+                            <h3><BiPhoneCall style={{ verticalAlign: "middle", marginRight: "13px" }} />{t.phone}</h3>
                             {contactData && contactData.map((post, index) =>
                                 <a key={index} href={"tel:" + post.phone}><p>{post.phone}</p></a>
                             )}

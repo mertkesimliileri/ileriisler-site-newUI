@@ -1,15 +1,10 @@
 import { defineConfig } from 'sanity'
 
 export default defineConfig({
-    title: "Home Superpower Section",
+    title: "Home Interactive Boxes Section",
     name: "homeSlider",
     type: "document",
     fields: [
-        {
-            title: "Section Title",
-            name: "title",
-            type: "string"
-        },
         {
             title: 'Slider Item',
             name: 'item',

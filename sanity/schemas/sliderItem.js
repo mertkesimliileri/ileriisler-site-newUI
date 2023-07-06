@@ -8,12 +8,36 @@ export default defineConfig({
         {
             title: "Title",
             name: "title",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Text",
             name: "text",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
     ]
 })

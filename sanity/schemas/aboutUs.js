@@ -13,14 +13,40 @@ export default defineConfig({
         {
             title: 'Paragraph 1', 
             name: 'content1',
-            type: 'array', 
-            of: [{type: 'block'}]
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                }
+            ]
         },
         {
             title: 'Paragraph 2', 
             name: 'content2',
-            type: 'array', 
-            of: [{type: 'block'}]
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: 'array', 
+                    of: [{type: 'block'}]
+                }
+            ]
         },
         {
             title: "Content Image",
@@ -30,12 +56,36 @@ export default defineConfig({
         {
             title: "Divider Text",
             name: "text",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         },
         {
             title: "Button Text",
             name: "buttonText",
-            type: "string"
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
         }
     ]
 })
