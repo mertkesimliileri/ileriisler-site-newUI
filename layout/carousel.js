@@ -64,7 +64,7 @@ const Carousel = () => {
     const Content = () => {
         if (step === 1) {
             return carouselData && carouselData[0].item.map((post, index) =>
-                <button style={{ border: "none", background: "white" }} onClick={() => handleFirstSelection(post.title)} key={index}>
+                <button className={styles.cardWrapper} style={{ border: "none", background: "white" }} onClick={() => handleFirstSelection(post.title)} key={index}>
                     <CarouselCard title={post.title[locale]} imageSrc={urlFor(post.mobileImage.asset._ref).url()} text={post.text[locale]} />
                 </button>
             )
