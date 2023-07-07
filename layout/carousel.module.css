@@ -100,11 +100,16 @@
         padding: 120px 150px 80px 150px;
     }
 
- }
- 
- @media only screen and (max-width: 576px) {
+}
+
+@media only screen and (max-width: 576px) {
     .wrapper {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
         flex-wrap: wrap;
+        -webkit-flex-direction: row;
+        flex-direction: row;
         column-gap: 20px;
         row-gap: 20px;
     }
@@ -116,4 +121,4 @@
     .box {
         width: 312px;
     }
- }
+}
