@@ -40,6 +40,23 @@ export default defineConfig({
             ]
         },
         {
+            title: "Bold Title",
+            name: "titleBold",
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
+        },
+        {
             title: "Text",
             name: "text",
             type: "object",

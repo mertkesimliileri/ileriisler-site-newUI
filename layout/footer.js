@@ -11,10 +11,12 @@ import Link from 'next/link';
 const Footer = (props) => {
     let display;
     let background;
+    let paddingTop;
     const [mobile, setMobile] = useState(false);
 
     if (props.hideColumns == true) {
         display = "none";
+        paddingTop = "36px";
     } else {
         display = "flex";
     }
@@ -35,7 +37,7 @@ const Footer = (props) => {
     },);
 
     return (
-        <div style={{ background: background }} className={styles.footer}>
+        <div style={{ background: background, paddingTop: paddingTop }} className={styles.footer}>
             {mobile ? <div className={styles.mobile}>
                 <div className={styles.logo}>
                     <Link href="/">

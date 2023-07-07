@@ -10,6 +10,7 @@ import HomeForm from '@/components/homeForm';
 import { useRouter } from 'next/router';
 import en from '../locales/en'
 import tr from '../locales/tr'
+import imageUrlBuilder from '@sanity/image-url'
 
 const Carousel = () => {
 
@@ -20,6 +21,7 @@ const Carousel = () => {
     const [secondOption, setSecondOption] = useState(null);
     const router = useRouter();
     const {locale} = router;
+    const builder = imageUrlBuilder(sanityClient)
     const t = locale === 'en' ? en : tr;
 
     let text;
@@ -32,6 +34,10 @@ const Carousel = () => {
         text = t.homeFormTitle2;
     } else if (step === 3) {
         text = t.homeFormTitle3;
+    }
+
+    function urlFor(source) {
+        return builder.image(source)
     }
 
     useEffect(() => {
@@ -59,7 +65,7 @@ const Carousel = () => {
         if (step === 1) {
             return carouselData && carouselData[0].item.map((post, index) =>
                 <button style={{ border: "none", background: "white" }} onClick={() => handleFirstSelection(post.title)} key={index}>
-                    <CarouselCard title={post.title[locale]} text={post.text[locale]} />
+                    <CarouselCard title={post.title[locale]} imageSrc={urlFor(post.mobileImage.asset._ref).url()} text={post.text[locale]} />
                 </button>
             )
         } else if (step === 2) {

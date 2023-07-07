@@ -67,6 +67,7 @@
     flex-direction: column;
     height: 224px;
     align-items: center;
+    padding-bottom: 36px;
 }
 
 .secondDivider div {
@@ -157,6 +158,10 @@
 .categories {
     display: flex;
     padding-bottom: 36px;
+}
+
+.categories button {
+    cursor: pointer;
 }
 
 .position {
@@ -316,7 +321,7 @@
     }
 
     .secondDivider {
-        height: 416px;
+        height: 400px;
     }
 
     .secondDivider h1 {

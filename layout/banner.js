@@ -19,6 +19,7 @@ const Banner = () => {
     "subTitle" : subTitle.${locale},
     "text" : text.${locale},
     "title" : title.${locale},
+    "titleBold" : titleBold.${locale},
     "buttonText" : buttonText.${locale}
     }`)
       .then((data) => setBanner(data))
@@ -31,6 +32,7 @@ const Banner = () => {
         {bannerData && bannerData.map((post, index) => <div className={styles.box} key={index}>
           <p className={styles.subHeader}>{post.subTitle}</p>
           <h1 className={styles.headerBld}>{post.title}</h1>
+          <h1 className={styles.headerBld2}>{post.titleBold}</h1>
           <p className={styles.text}>{post.text}</p>
           <Button buttonType={1}>{post.buttonText} <HiOutlineChevronRight className={styles.icon} /></Button>
         </div>

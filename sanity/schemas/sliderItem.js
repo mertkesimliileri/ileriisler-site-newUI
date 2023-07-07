@@ -39,5 +39,10 @@ export default defineConfig({
                 }
             ]
         },
+        {
+            title: "Mobile Icon",
+            name: "mobileImage",
+            type: "image"
+        },
     ]
 })

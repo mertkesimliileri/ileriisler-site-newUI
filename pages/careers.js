@@ -17,6 +17,7 @@ import Form from "@/components/form";
 import { useRouter } from 'next/router'
 import en from '../locales/en'
 import tr from '../locales/tr'
+import { useRef } from 'react';
 
 const Careers = () => {
 
@@ -29,6 +30,8 @@ const Careers = () => {
     const router = useRouter();
     const {locale} = router;
     const t = locale === 'en' ? en : tr;
+    const [showForm, setShowForm] = useState(false);
+    const ref = useRef(null);
 
     function urlFor(source) {
         return builder.image(source)
@@ -54,6 +57,13 @@ const Careers = () => {
 
     const showPositions = () => {
         setShowSection(false);
+    }
+
+    const handleShowForm = () => {
+        setShowForm(true);
+        setTimeout(() => {
+            ref.current?.scrollIntoView({behavior: 'smooth'});
+        }, 300)
     }
 
     return (
@@ -111,7 +121,7 @@ const Careers = () => {
                         <Link className={styles.first} href="/aboutUs"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav5}</Link>
                         <Link className={styles.second} href="/contact">{t.nav6} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
                     </div>
-                    <h1>Açık Pozisyonlar</h1>
+                    <h1>{t.openings}</h1>
                     <div className={styles.categories}>
                         <button onClick={() => setActive("all")} className={active == "all" ? "active" : "tab"}>{t.all}</button>
                         <button onClick={() => setActive("software")} className={active == "software" ? "active" : "tab"}>{t.software}</button>
@@ -121,8 +131,8 @@ const Careers = () => {
                         <div key={index} onClick={() => { setShow(index); setOpen(!open) }} style={show === index && open ? { paddingBottom: "40px" } : { paddingBottom: "0" }} className={styles.positionWrapper}>
                             <div className={styles.position}>
                                 <div className={styles.post}>
-                                    <p>{post.title[locale]}</p>
-                                    <button>{t.remote}</button>
+                                    <p style={show === index && open ? { color: "#4A59D2" } : undefined}>{post.title[locale]}</p>
+                                    <button style={show === index && open ? { background: "#4A59D2" } : undefined}>{t.remote}</button>
                                 </div>
                                 <FiChevronDown />
                             </div>
@@ -138,8 +148,8 @@ const Careers = () => {
                         <div key={index} onClick={() => { setShow(index); setOpen(!open) }} style={show === index && open ? { paddingBottom: "40px" } : { paddingBottom: "0" }} className={styles.positionWrapper}>
                             <div className={styles.position}>
                                 <div className={styles.post}>
-                                    <p>{post.title[locale]}</p>
-                                    <button>{t.remote}</button>
+                                    <p style={show === index && open ? { color: "#4A59D2" } : undefined}>{post.title[locale]}</p>
+                                    <button style={show === index && open ? { background: "#4A59D2" } : undefined}>{t.remote}</button>
                                 </div>
                                 <FiChevronDown />
                             </div>
@@ -168,11 +178,17 @@ const Careers = () => {
                         <div key={index} className={styles.secondDivider}>
                             <div>
                                 <h1 className={styles.dividerText}>{post.secondTitle}</h1>
-                                <p>{post.secondText}</p>
+                                <p style={{paddingBottom: "36px"}}>{post.secondText}</p>
+                                <Button onClick={handleShowForm} buttonType={4}>{t.formHeader}</Button>
                             </div>
                         </div>
                     )}
-                    <Form />
+                    {showForm ?
+                        <div ref={ref}>
+                             <Form />
+                        </div>
+                        : undefined
+                    }
                 </>}
             <Footer background={true} hideColumns={true} />
         </div>

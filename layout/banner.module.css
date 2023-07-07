@@ -19,6 +19,14 @@
     line-height: 84px;
     letter-spacing: 0.005em;
     color: #222136;
+}
+
+.headerBld2 {
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 84px;
+    letter-spacing: 0.005em;
+    color: #222136;
     padding-bottom: 36px;
 }
 
