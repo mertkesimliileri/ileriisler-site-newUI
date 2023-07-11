@@ -45,4 +45,6 @@ export default {
     start: "Let’s start with one project.",
     contactİleri: "Contact İlerişler",
     openings: "Open Positions",
+    project1: "New project",
+    project2: "Existing project"
 }

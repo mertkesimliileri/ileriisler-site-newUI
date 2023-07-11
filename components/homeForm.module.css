@@ -52,6 +52,10 @@
     line-height: 103%;
 }
 
+.form label span {
+    color: #C20713;
+}
+
 
 @media only screen and (max-width: 992px) {
    .row div {

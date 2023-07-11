@@ -44,5 +44,7 @@ export default {
     management: "Yönetim",
     start: "Hadi bir proje ile başlayalım.",
     contactİleri: "İleriİşler'e Ulaşın",
-    openings: "Açık Pozisyonlar"
+    openings: "Açık Pozisyonlar",
+    project1: "Yeni bir proje",
+    project2: "Mevcut proje"
 }

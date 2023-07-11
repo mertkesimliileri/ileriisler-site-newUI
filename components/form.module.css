@@ -118,6 +118,10 @@
     padding-left: 12px !important;
 }
 
+.form label span {
+    color: #C20713;
+}
+
 .buttonRow {
     display: flex;
     justify-content: end;

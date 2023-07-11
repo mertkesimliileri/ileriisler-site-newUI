@@ -32,6 +32,7 @@ const Careers = () => {
     const t = locale === 'en' ? en : tr;
     const [showForm, setShowForm] = useState(false);
     const ref = useRef(null);
+    const [role, setRole] = useState(null);
 
     function urlFor(source) {
         return builder.image(source)
@@ -60,6 +61,13 @@ const Careers = () => {
     }
 
     const handleShowForm = () => {
+        setShowForm(true);
+        setTimeout(() => {
+            ref.current?.scrollIntoView({behavior: 'smooth'});
+        }, 300)
+    }
+
+    const handleApply = () => {
         setShowForm(true);
         setTimeout(() => {
             ref.current?.scrollIntoView({behavior: 'smooth'});
@@ -139,7 +147,7 @@ const Careers = () => {
                             <div style={show === index && open ? { display: "block" } : { display: "none" }} className={styles.details}>
                                 <SanityBlockContent blocks={post.details[locale]} />
                                 <div className={styles.buttonWrapper}>
-                                    <button>{t.apply}</button>
+                                    <button onClick={() => {setRole(post.title[locale]); handleApply();}}>{t.apply}</button>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +164,7 @@ const Careers = () => {
                             <div style={show === index && open ? { display: "block" } : { display: "none" }} className={styles.details}>
                                 <SanityBlockContent blocks={post.details[locale]} />
                                 <div className={styles.buttonWrapper}>
-                                    <button>{t.apply}</button>
+                                    <button onClick={() => {setRole(post.title[locale]); handleApply();}}>{t.apply}</button>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +193,7 @@ const Careers = () => {
                     )}
                     {showForm ?
                         <div ref={ref}>
-                             <Form />
+                             <Form appliedRole={role} />
                         </div>
                         : undefined
                     }

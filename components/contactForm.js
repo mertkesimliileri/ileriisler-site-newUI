@@ -5,8 +5,65 @@ import en from '../locales/en'
 import tr from '../locales/tr'
 import { BsChevronDown } from "@react-icons/all-files/bs/BsChevronDown";
 import { useState } from 'react'
+import { sendContactForm } from "../lib/contactApi";
 
 const ContactForm = () => {
+
+    const initialValues = {
+        fname: "",
+        lname: "",
+        email: "",
+        title: "",
+        company: "",
+        country: "",
+    }
+
+    const initState = { values: initialValues }
+
+    const [state, setState] = useState(initState);
+
+    const { values } = state;
+    const [validation, setValidation] = useState({
+        fname: false,
+        lname: false,
+        email: false
+    });
+    const [displayRequired, setDisplayRequired] = useState(false);
+
+    const handleChange = ({ target }) => {
+        if (target.name === "fname" && target.value.length > 0) {
+            validation.fname = true;
+        } else if (target.name === "fname" && target.value.length == 0) {
+            validation.fname = false;
+        }
+        if (target.name === "lname" && target.value.length > 0) {
+            validation.lname = true;
+        } else if (target.name === "lname" && target.value.length == 0) {
+            validation.lname = false;
+        }
+        if (target.name === "email" && target.value.length > 0) {
+            validation.email = true;
+        } else if (target.name === "email" && target.value.length == 0) {
+            validation.email = false;
+        }
+        setState((prev) => ({
+            ...prev,
+            values: {
+                ...prev.values,
+                [target.name]: target.value,
+            }
+        }));
+    }
+
+    const onSubmit = async (e) => {
+        setDisplayRequired(true);
+        if (!validation.fname || !validation.lname || !validation.email) {
+            e.preventDefault();
+        }
+        if (validation.email && validation.fname && validation.lname) {
+            await sendContactForm(values)
+        }
+    }
 
     const router = useRouter();
     const { locale } = router;
@@ -23,33 +80,33 @@ const ContactForm = () => {
         <div>
             <form className={styles.form}>
                 <div>
-                    <label htmlFor="fname">{t.formFname}</label>
-                    <input className={styles.input} type="text" id="fname" name="fname" />
+                    <label htmlFor="fname">{t.formFname} {displayRequired && !validation.fname ? <span>*</span> : undefined}</label>
+                    <input className={styles.input} value={values.fname} onChange={handleChange} type="text" id="fname" name="fname" />
                 </div>
                 <div>
-                    <label htmlFor="lname">{t.formLname}</label>
-                    <input className={styles.input} type="text" id="lname" name="lname" />
+                    <label htmlFor="lname">{t.formLname} {displayRequired && !validation.lname ? <span>*</span> : undefined}</label>
+                    <input className={styles.input} value={values.lname} onChange={handleChange} type="text" id="lname" name="lname" />
                 </div>
                 <div>
-                    <label htmlFor="cname">{t.formCompany3}</label>
-                    <input className={styles.input} type="text" id="cname" name="cname" />
+                    <label htmlFor="company">{t.formCompany3}</label>
+                    <input className={styles.input} value={values.company} onChange={handleChange} type="text" id="company" name="company" />
                 </div>
                 {showForm ?
                     <>
                         <div>
-                            <label htmlFor="bmail">{t.formBusinessMail}</label>
-                            <input className={styles.input} type="email" id="bmail" name="bmail" />
+                            <label htmlFor="email">{t.formBusinessMail} {displayRequired && !validation.email ? <span>*</span> : undefined}</label>
+                            <input className={styles.input} value={values.email} onChange={handleChange} type="email" id="email" name="email" />
                         </div>
                         <div>
-                            <label htmlFor="jtitle">{t.formTitle2}</label>
-                            <input className={styles.input} type="text" id="jtitle" name="jtitle" />
+                            <label htmlFor="title">{t.formTitle2}</label>
+                            <input className={styles.input} value={values.title} onChange={handleChange} type="text" id="title" name="title" />
                         </div>
                         <div>
                             <label htmlFor="country">{t.formCountry}</label>
-                            <input className={styles.input} type="text" id="country" name="country" />
+                            <input className={styles.input} value={values.country} onChange={handleChange} type="text" id="country" name="country" />
                         </div>
                         <div>
-                            <input className={styles.button} type="submit" value={t.formSubmit} />
+                            <input className={styles.button} onClick={(e)=> onSubmit(e)} type="submit" value={t.formSubmit} />
                         </div>
                     </>
                     : undefined

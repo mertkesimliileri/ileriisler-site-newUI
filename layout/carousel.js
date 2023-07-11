@@ -25,8 +25,8 @@ const Carousel = () => {
     const t = locale === 'en' ? en : tr;
 
     let text;
-    const project1 = "Yeni bir proje"
-    const project2 = "Mevcut Proje"
+    const project1 = t.project1
+    const project2 = t.project2
 
     if (step === 1) {
         text = t.homeFormTitle1;
@@ -50,7 +50,7 @@ const Carousel = () => {
     }, [])
 
     const handleFirstSelection = (title) => {
-        setFirstOption(title);
+        setFirstOption(title.en);
         setProgress("66.6%");
         setStep(2);
     }

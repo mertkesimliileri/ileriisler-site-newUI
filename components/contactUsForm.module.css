@@ -24,6 +24,10 @@
     letter-spacing: -0.03em;
 }
 
+.form label span {
+    color: #C20713;
+}
+
 .input {
     background: #E9E9E9;
     height: 48px;
