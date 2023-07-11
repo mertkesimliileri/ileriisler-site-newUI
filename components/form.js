@@ -10,7 +10,7 @@ import { sendCareersForm } from "../lib/careersFormApi";
 const Form = (props) => {
 
     const initialValues = {
-        cv: undefined,
+        cv: "",
         fname: "",
         email: "",
         phone: "",
@@ -67,15 +67,18 @@ const Form = (props) => {
         }
         if (target.name === "cv") {
             setFileName(target.files[0].name);
-            const file = URL.createObjectURL(target.files[0]);
-            console.log(file);
-            setState((prev) => ({
-                ...prev,
-                values: {
-                    ...prev.values,
-                    [target.name]: file,
-                }
-            }));
+            const reader = new FileReader();
+            reader.onload = function(){
+                const dataURL = reader.result;
+                setState((prev) => ({
+                    ...prev,
+                    values: {
+                        ...prev.values,
+                        [target.name]: dataURL,
+                    }
+                }));
+            };
+            reader.readAsDataURL(target.files[0]);
         } else {
             setState((prev) => ({
                 ...prev,
@@ -94,8 +97,6 @@ const Form = (props) => {
             e.preventDefault();
         }
         if (validation.email && validation.fname && validation.phone && validation.cv) {
-            e.preventDefault();
-            setApplied(true);
             await sendCareersForm(values)
         } 
     }
@@ -160,7 +161,6 @@ const Form = (props) => {
                 <div className={styles.buttonRow}>
                     <input onClick={onSubmit} className={styles.button} type="submit" value={t.formSend} />
                 </div>
-                {applied ? <p>Applied successfully!</p> : undefined}
             </form>
         </div>
     )
