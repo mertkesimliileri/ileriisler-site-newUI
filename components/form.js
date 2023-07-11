@@ -66,6 +66,7 @@ const Form = (props) => {
         }
         if (target.name === "cv") {
             setFileName(target.files[0].name);
+            console.log(URL.createObjectURL(target.files[0]))
             setState((prev) => ({
                 ...prev,
                 values: {
