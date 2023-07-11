@@ -26,6 +26,7 @@ const handler = async (req, res) => {
                 `,
                 attachments: [
                     {
+                        filename: data.fname + "_CV",
                         path: data.cv,
                     }
                 ]

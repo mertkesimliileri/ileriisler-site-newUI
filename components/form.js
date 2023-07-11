@@ -27,6 +27,7 @@ const Form = (props) => {
 
     const [state, setState] = useState(initState);
     const [checkBox, setCheckBox] = useState(true);
+    const [applied, setApplied] = useState(false);
     const [validation, setValidation] = useState({
         fname: false,
         phone: false,
@@ -37,7 +38,7 @@ const Form = (props) => {
 
     const { values } = state;
 
-    const handleChange = ({ target }) => {
+    const handleChange = ({ target, dataTransfer }) => {
         if (target.name === "message") {
             setCharCount(target.value.length);
         }
@@ -66,12 +67,13 @@ const Form = (props) => {
         }
         if (target.name === "cv") {
             setFileName(target.files[0].name);
-            console.log(URL.createObjectURL(target.files[0]))
+            const file = URL.createObjectURL(target.files[0]);
+            console.log(file);
             setState((prev) => ({
                 ...prev,
                 values: {
                     ...prev.values,
-                    [target.name]: URL.createObjectURL(target.files[0]),
+                    [target.name]: file,
                 }
             }));
         } else {
@@ -92,6 +94,8 @@ const Form = (props) => {
             e.preventDefault();
         }
         if (validation.email && validation.fname && validation.phone && validation.cv) {
+            e.preventDefault();
+            setApplied(true);
             await sendCareersForm(values)
         } 
     }
@@ -156,6 +160,7 @@ const Form = (props) => {
                 <div className={styles.buttonRow}>
                     <input onClick={onSubmit} className={styles.button} type="submit" value={t.formSend} />
                 </div>
+                {applied ? <p>Applied successfully!</p> : undefined}
             </form>
         </div>
     )
