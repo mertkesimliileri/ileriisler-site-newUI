@@ -142,11 +142,11 @@ const Form = (props) => {
                 <h2>{t.formLinks}</h2>
                 <div>
                     <label htmlFor="linkedIn">{t.formLin}</label>
-                    <input type="url" id="linkedIn" value={values.linkedIn} onChange={handleChange} name="linkedIn" />
+                    <input type="text" id="linkedIn" value={values.linkedIn} onChange={handleChange} name="linkedIn" />
                 </div>
                 <div>
                     <label htmlFor="portfolio">{t.formPortfolio}</label>
-                    <input type="url" id="portfolio" value={values.portfolio} onChange={handleChange} name="portfolio" />
+                    <input type="text" id="portfolio" value={values.portfolio} onChange={handleChange} name="portfolio" />
                 </div>
                 <h2>{t.formAdditionalInfo}</h2>
                 <div className={styles.trow}>
