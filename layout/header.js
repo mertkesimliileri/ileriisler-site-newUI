@@ -8,19 +8,22 @@ import { useRouter } from 'next/router';
 import { usePathname } from 'next/navigation'
 import en from '../locales/en'
 import tr from '../locales/tr'
+import { GrClose } from "@react-icons/all-files/gr/GrClose";
 
 const Header = (props) => {
 
   const router = useRouter();
-  const {locale} = router;
+  const { locale } = router;
   const pathname = usePathname();
   const [localeText, setLocaleText] = useState("");
+  const [mobileMenu, setMobileMenu] = useState(false);
   const t = locale === 'en' ? en : tr;
+  let mobileIcon;
 
   useEffect(() => {
-    if(locale === "en") {
+    if (locale === "en") {
       setLocaleText("tr");
-    } else if(locale === "tr") {
+    } else if (locale === "tr") {
       setLocaleText("en");
     }
   }, []);
@@ -39,15 +42,25 @@ const Header = (props) => {
   }
 
   const changeLocale = () => {
-      if(localeText === "en") {
-        let locale = "en"
-        router.push(pathname, pathname, {locale});
-        setLocaleText("tr")
-      } else if(localeText === "tr") {
-        let locale = "tr"
-        router.push(pathname, pathname, {locale});
-        setLocaleText("en")
-      }
+    if (localeText === "en") {
+      let locale = "en"
+      router.push(pathname, pathname, { locale });
+      setLocaleText("tr")
+    } else if (localeText === "tr") {
+      let locale = "tr"
+      router.push(pathname, pathname, { locale });
+      setLocaleText("en")
+    }
+  }
+
+  const handleMobileMenu = () => {
+    setMobileMenu(!mobileMenu);
+  }
+
+  if (!mobileMenu) {
+    mobileIcon = <GiHamburgerMenu onClick={handleMobileMenu} />
+  } else {
+    mobileIcon = <GrClose onClick={handleMobileMenu} />
   }
 
   useEffect(() => {
@@ -65,7 +78,12 @@ const Header = (props) => {
         </Link>
       </div>
       <div className={navStyle}>
-        {mobile ? <GiHamburgerMenu /> :
+        {mobile ?
+          <div style={{ display: "flex", alignItems: "center", paddingBottom: "10px" }}>
+            <p onClick={changeLocale} style={{ marginRight: "32px", paddingTop: "2px", cursor: "pointer", color: divider, textTransform: "uppercase" }}>{localeText}</p>
+            {mobileIcon}
+          </div>
+          :
           <>
             <a>{t.nav1}</a>
             <a>{t.nav2}</a>
@@ -80,6 +98,41 @@ const Header = (props) => {
         }
 
       </div>
+      {mobileMenu ?
+        <div className={styles.mobileNav}>
+          <a>
+            <div className={styles.mobileNavItem}>
+              {t.nav1}
+            </div>
+          </a>
+          <a>
+            <div className={styles.mobileNavItem}>
+              {t.nav2}
+            </div>
+          </a>
+          <a>
+            <div className={styles.mobileNavItem}>
+              {t.nav3}
+            </div>
+          </a>
+          <Link href="/careers">
+            <div className={styles.mobileNavItem}>
+              {t.nav4}
+            </div>
+          </Link>
+          <Link href="/aboutUs">
+            <div className={styles.mobileNavItem}>
+              {t.nav5}
+            </div>
+          </Link>
+          <Link href="/contact">
+            <div className={styles.mobileNavItem}>
+              {t.nav6}
+            </div>
+          </Link>
+        </div>
+        : undefined
+      }
     </div>
   )
 }

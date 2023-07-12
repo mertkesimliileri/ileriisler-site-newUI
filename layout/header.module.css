@@ -36,6 +36,26 @@
     border-right: 1px solid #4C4B5C;
 }
 
+.mobileNav {
+    background: #FAF9FA;
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    justify-content: center;
+}
+
+.mobileNavItem {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media only screen and (max-width: 992px) {
     .header {
       width: 85%;
