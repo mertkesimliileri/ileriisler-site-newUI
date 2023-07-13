@@ -73,6 +73,11 @@
     padding-top: 24px;
 }
 
+.video {
+    max-width: 1128px;
+    height: auto;
+}
+
 
 @media only screen and (max-width: 992px) {
     .title {
@@ -88,6 +93,10 @@
     .content img {
         width: 100%;
         height: auto;
+    }
+
+    .video {
+        max-width: 960px;
     }
 }
 
@@ -109,5 +118,9 @@
     .contentWrapper p {
         font-size: 16px;
         line-height: 184.02%;
+    }
+
+    .video {
+        width: 100%;
     }
 }

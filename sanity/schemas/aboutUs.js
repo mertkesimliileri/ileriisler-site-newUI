@@ -49,9 +49,9 @@ export default defineConfig({
             ]
         },
         {
-            title: "Content Image",
-            name: "contentImage",
-            type: "image"
+            title: 'Video URL',
+            name: 'video',
+            type: 'url',
         },
         {
             title: "Divider Text",

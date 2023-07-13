@@ -14,6 +14,7 @@ import Footer from '@/layout/footer'
 import { useRouter } from 'next/router'
 import en from '../locales/en'
 import tr from '../locales/tr'
+import MuxPlayer from '@mux/mux-player-react'
 
 
 const AboutUs = () => {
@@ -35,7 +36,8 @@ const AboutUs = () => {
       "content2" : content2.${locale},
       "text" : text.${locale},
       "buttonText" : buttonText.${locale},
-      contentImage
+      contentImage,
+      video,
       }`)
             .then((data) => setAbout(data))
             .catch(console.error);
@@ -74,14 +76,7 @@ const AboutUs = () => {
                         )}
                     </div>
                     {aboutData && aboutData.map((post, index) =>
-                        <Image
-                            src={urlFor(post.contentImage.asset._ref).url()}
-                            alt="image"
-                            width={1128}
-                            height={482}
-                            sizes="100vw"
-                            key={index}
-                        />
+                        <video key={index} loop muted className={styles.video} autoPlay src={post.video}></video>
                     )}
                 </div>
             </div>
