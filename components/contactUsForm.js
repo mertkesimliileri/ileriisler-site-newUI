@@ -120,7 +120,7 @@ const ContactUsFrom = () => {
           <label htmlFor="confirm">{t.formCheckbox}</label>
         </div>
         <div className={styles.buttonRow}>
-          <input className={styles.button} onClick={(e)=> onSubmit(e)} type="submit" value={t.formSend} />
+          <input disabled={!validation.fname || !validation.lname || !validation.email ? true : false} className={styles.button} onClick={(e)=> onSubmit(e)} type="submit" value={t.formSend} />
         </div>
       </form>
     </div>

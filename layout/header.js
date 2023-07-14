@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { usePathname } from 'next/navigation'
 import en from '../locales/en'
 import tr from '../locales/tr'
-import { GrClose } from "@react-icons/all-files/gr/GrClose";
+import { CgClose } from "@react-icons/all-files/cg/CgClose";
 
 const Header = (props) => {
 
@@ -60,7 +60,7 @@ const Header = (props) => {
   if (!mobileMenu) {
     mobileIcon = <GiHamburgerMenu onClick={handleMobileMenu} />
   } else {
-    mobileIcon = <GrClose onClick={handleMobileMenu} />
+    mobileIcon = <CgClose onClick={handleMobileMenu} />
   }
 
   useEffect(() => {
@@ -93,7 +93,7 @@ const Header = (props) => {
             <Link href="/contact">
               <Button buttonType={props.buttonType}>{t.nav6}</Button>
             </Link>
-            <p onClick={changeLocale} style={{ marginRight: "100px", cursor: "pointer", color: divider, textTransform: "uppercase" }}>{localeText}</p>
+            <p onClick={changeLocale} className={styles.locale} style={{ marginRight: "100px", cursor: "pointer", color: divider, textTransform: "uppercase" }}>{localeText}</p>
           </>
         }
 

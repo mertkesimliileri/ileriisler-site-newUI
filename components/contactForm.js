@@ -29,7 +29,7 @@ const ContactForm = () => {
         email: false
     });
     const [displayRequired, setDisplayRequired] = useState(false);
-
+   
     const handleChange = ({ target }) => {
         if (target.name === "fname" && target.value.length > 0) {
             validation.fname = true;
@@ -106,7 +106,7 @@ const ContactForm = () => {
                             <input className={styles.input} value={values.country} onChange={handleChange} type="text" id="country" name="country" />
                         </div>
                         <div>
-                            <input className={styles.button} onClick={(e)=> onSubmit(e)} type="submit" value={t.formSubmit} />
+                            <input disabled={!validation.fname || !validation.lname || !validation.email ? true : false} className={styles.button} onClick={(e)=> onSubmit(e)} type="submit" value={t.formSubmit} />
                         </div>
                     </>
                     : undefined

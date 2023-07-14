@@ -159,7 +159,7 @@ const Form = (props) => {
                     <label htmlFor="confirm">{t.formCheckbox}</label>
                 </div>
                 <div className={styles.buttonRow}>
-                    <input onClick={onSubmit} className={styles.button} type="submit" value={t.formSend} />
+                    <input disabled={!validation.fname || !validation.phone || !validation.email || !validation.cv ? true : false} onClick={onSubmit} className={styles.button} type="submit" value={t.formSend} />
                 </div>
             </form>
         </div>

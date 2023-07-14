@@ -83,9 +83,14 @@
     box-shadow: -12px -12px 24px #FFFFFF, 12px 12px 24px #B4C1D5;
 }
 
+.backIcon {
+    vertical-align: middle;
+    padding-bottom: 3px;
+}
+
 @media only screen and (max-width: 992px) {
     .wrapper {
-        width: auto;
+        width: 100%;
     }
 
     .box {
@@ -94,10 +99,19 @@
 
     .carousel {
         text-align: center;
+        align-items: normal;
     }
 
     .card {
         padding: 120px 150px 80px 150px;
+    }
+
+    .header {
+        padding-bottom: 40px;
+    }
+
+    .wrapper div {
+        flex: 1;
     }
 
 }
@@ -114,6 +128,12 @@
         row-gap: 20px;
         -webkit-flex: 1 1 auto;
         justify-content: center;
+        width: 100%;
+    }
+
+    .carousel {
+        padding: 100px 32px;
+        align-items: center;
     }
 
     .card {
@@ -121,6 +141,6 @@
     }
 
     .box {
-        width: 312px;
+        width: 100%;
     }
 }

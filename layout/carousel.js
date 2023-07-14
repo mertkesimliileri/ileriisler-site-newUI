@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { RiLightbulbLine } from "@react-icons/all-files/ri/RiLightbulbLine";
 import { BiCube } from "@react-icons/all-files/bi/BiCube";
 import HomeForm from '@/components/homeForm';
+import { BiChevronLeft } from "@react-icons/all-files/bi/BiChevronLeft"
 import { useRouter } from 'next/router';
 import en from '../locales/en'
 import tr from '../locales/tr'
@@ -15,7 +16,7 @@ import imageUrlBuilder from '@sanity/image-url'
 const Carousel = () => {
 
     const [carouselData, setCarousel] = useState(null);
-    const [progress, setProgress] = useState("33.3%");
+    const [progress, setProgress] = useState(33.3);
     const [step, setStep] = useState(1);
     const [firstOption, setFirstOption] = useState(null);
     const [secondOption, setSecondOption] = useState(null);
@@ -51,14 +52,19 @@ const Carousel = () => {
 
     const handleFirstSelection = (title) => {
         setFirstOption(title.en);
-        setProgress("66.6%");
+        setProgress(66.6);
         setStep(2);
     }
 
     const handleSecondSelection = (title) => {
         setSecondOption(title);
-        setProgress("100%");
+        setProgress(100);
         setStep(3);
+    }
+
+    const handleBack = () => {
+        setStep(step - 1);
+        setProgress(progress - 33.3)
     }
 
     const Content = () => {
@@ -97,12 +103,12 @@ const Carousel = () => {
                     <Content />
                 </div>
                 <div className={styles.bar}>
-                    <div style={{ width: progress }} className={styles.progress}></div>
+                    <div style={{ width: progress + "%" }} className={styles.progress}></div>
                 </div>
                 {locale === "en" ?
-                    <p className={styles.step}>Step {step} of 3</p> 
+                    <p className={styles.step}>{step != 1 ? <BiChevronLeft onClick={handleBack} className={styles.backIcon} /> : undefined } Step {step} of 3</p> 
                     :
-                    <p className={styles.step}>{step}/3 Aşama</p>
+                    <p className={styles.step}>{step != 1 ? <BiChevronLeft onClick={handleBack} className={styles.backIcon} /> : undefined } {step}/3 Aşama</p>
                 }
                 
             </div>

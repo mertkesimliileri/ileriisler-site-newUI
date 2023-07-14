@@ -69,6 +69,11 @@
     padding-bottom: 36px;
 }
 
+.imageWrapper img {
+    object-fit: cover;
+}
+
+
 .secondText p {
     padding-top: 24px;
 }
@@ -88,11 +93,6 @@
     .content {
         padding: 440px 32px 48px;
         max-width: 750px;
-    }
-
-    .content img {
-        width: 100%;
-        height: auto;
     }
 
     .video {

@@ -99,7 +99,7 @@ const HomeForm = (props) => {
           </div>
         </div>
         <div className={styles.buttonRow}>
-          <input onClick={(e)=> onSubmit(e)} className={styles.button}  type="submit" value="Send" />
+          <input disabled={!validation.fname || !validation.lname || !validation.email ? true : false} onClick={(e)=> onSubmit(e)} className={styles.button}  type="submit" value="Send" />
         </div>
       </form>
     </div>

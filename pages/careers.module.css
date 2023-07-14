@@ -164,6 +164,10 @@
     cursor: pointer;
 }
 
+.imageWrapper img {
+    object-fit: cover;
+}
+
 .position {
     display: flex;
     align-items: center;
@@ -251,6 +255,10 @@
     width: 250px;
 }
 
+.secondDivider button:hover {
+    box-shadow: none !important;
+}
+
 @media only screen and (max-width: 992px) {
     .content {
         padding: 440px 32px 120px;
@@ -277,6 +285,7 @@
     .secondDivider {
         padding: 0 32px;
         align-items: normal;
+        height: 280px;
     }
 
     .secondDivider div {
@@ -307,6 +316,11 @@
     .cardText p {
         font-size: 16px;
         line-height: 184.02%;
+    }
+
+    .post {
+        width: 33%;
+        align-items: center;
     }
 
     .cardWrapper {
@@ -342,7 +356,4 @@
         overflow-x: scroll;
     }
 
-    .post {
-        width: 350px;
-    }
 }

@@ -16,9 +16,26 @@
     align-items: center;
 }
 
+.locale {
+    transition: all .4s ease;
+}
+
+.locale:hover {
+    transition: all .4s ease;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 .nav a {
     padding: 0 16px;
     color: #4C4B5C;
+    transition: all .4s ease;
+}
+
+.nav a:hover {
+    transition: all .4s ease;
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 .nav2 {   
@@ -30,6 +47,13 @@
 .nav2 a {
     padding: 0 16px;
     color: white;
+    transition: all .4s ease;
+}
+
+.nav2 a:hover {
+    font-weight: 600;
+    text-decoration: underline;
+    transition: all .4s ease;
 }
 
 .divider {

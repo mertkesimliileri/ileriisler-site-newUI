@@ -199,6 +199,10 @@
     color: #FFFFFF;
 }
 
+.imageWrapper img {
+    object-fit: cover;
+}
+
 @media only screen and (max-width: 992px) {
 
     .title {
@@ -242,19 +246,24 @@
         line-height: 184.02%;
     }
 
+    .shadowCircle img {
+        width: 18px;
+        height: 18px;
+    }
+
     .circle {
-        width: 72px;
-        height: 72px;
+        width: 62px;
+        height: 62px;
     }
 
     .mainCircle {
-        width: 72px;
-        height: 72px;
+        width: 62px;
+        height: 62px;
     }
 
     .shadowCircle {
-        width: 72px;
-        height: 72px;
+        width: 62px;
+        height: 62px;
     }
 
     .circleWrapper p {
@@ -271,8 +280,8 @@
         position: absolute;
         width: auto;
         height: auto;
-        top: 38%;
-        transform: rotate(144deg);
+        top: 35%;
+        transform: rotate(120deg);
         left: -20%;
         z-index: 98;
     }
@@ -283,8 +292,8 @@
         position: absolute;
         width: auto;
         height: auto;
-        top: 20%;
-        transform: rotate(196deg);
+        top: 15%;
+        transform: rotate(210deg);
         left: -33%;
         z-index: 98;
     }

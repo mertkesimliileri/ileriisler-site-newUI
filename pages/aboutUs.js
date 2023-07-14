@@ -14,7 +14,6 @@ import Footer from '@/layout/footer'
 import { useRouter } from 'next/router'
 import en from '../locales/en'
 import tr from '../locales/tr'
-import MuxPlayer from '@mux/mux-player-react'
 
 
 const AboutUs = () => {
@@ -54,11 +53,11 @@ const AboutUs = () => {
                         width={1441}
                         height={400}
                         sizes="100vw"
-                        style={{ width: '100%', height: '400px', position: "absolute" }}
+                        style={{ width: '100%', position: "absolute" }}
                     />
                 </div>
             )}
-            <h1 className={styles.title}>About Us</h1>
+            <h1 className={styles.title}>{t.nav5}</h1>
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <div className={styles.content}>
                     <div className={styles.sections}>
@@ -76,7 +75,7 @@ const AboutUs = () => {
                         )}
                     </div>
                     {aboutData && aboutData.map((post, index) =>
-                        <video key={index} loop muted className={styles.video} autoPlay src={post.video}></video>
+                        <video key={index} loop muted playsInline className={styles.video} autoPlay src={post.video}></video>
                     )}
                 </div>
             </div>

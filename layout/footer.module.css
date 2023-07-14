@@ -109,6 +109,12 @@
     color: #222136;
 }
 
+.column p:hover {
+    transition: all .4s ease;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 .mobileText {
     font-weight: 400;
     font-size: 14px;

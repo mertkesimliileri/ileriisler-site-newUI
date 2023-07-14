@@ -45,6 +45,17 @@
     height: 40px;
     background: #FFFFFF;
     border: none;
+    transition: all .5s ease;
+}
+
+.button:hover {
+    transform: translate3D(0, -1px, 0) scale(1.1);
+    transition: all .4s ease;
+    box-shadow: -12px -12px 24px #FFFFFF, 12px 12px 24px #B4C1D5;
+}
+
+.button:disabled {
+    opacity: 0.5;
 }
 
 .down {

@@ -142,15 +142,26 @@
     letter-spacing: -0.03em !important;
     line-height: 103% !important;
     width: 152px !important;
+    transition: all .5s ease !important;
+}
+
+.button:hover {
+    transform: translate3D(0, -1px, 0) scale(1.1);
+    transition: all .4s ease;
+    box-shadow: -12px -12px 24px #FFFFFF, 12px 12px 24px #B4C1D5;
+}
+
+.button:disabled {
+    opacity: 0.5;
 }
 
 @media only screen and (max-width: 992px) {
     .form input {
-        width: 714px;
+        width: 100%;
     }
 
     .trow {
-        width: 714px;
+        width: 100%;
     }
 
     .formWrapper {
@@ -165,7 +176,7 @@
 
 @media only screen and (max-width: 576px) {
     .form input {
-        width: 315px;
+        width: 100%;
     }
 
     .formWrapper h1 {
@@ -174,6 +185,14 @@
     }
 
     .trow {
-        width: 315px;
+        width: 100%;
+    }
+
+    .trow::after {
+        content: '';
+        width: 100%;
+        background: #E9E9E9;
+        height: 1px;
+        position: absolute;
     }
 }
