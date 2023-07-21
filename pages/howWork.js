@@ -69,7 +69,7 @@ const HowWork = () => {
                 </div>
             )}
             <h1 className={styles.title}>{t.nav7}</h1>
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div className={styles.pd32} style={{ display: "flex", justifyContent: "center" }}>
                 <div className={styles.content}>
                     <div className={styles.sections}>
                         <Link className={styles.first} href="/aboutUs"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav5}</Link>

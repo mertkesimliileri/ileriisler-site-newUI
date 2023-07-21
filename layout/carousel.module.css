@@ -100,6 +100,7 @@
     .carousel {
         text-align: center;
         align-items: normal;
+        padding: 100px 32px;
     }
 
     .card {
@@ -114,6 +115,13 @@
         flex: 1;
     }
 
+}
+
+@media only screen and (max-width: 930px) {
+    .wrapper {
+        overflow:hidden;
+        overflow-x:scroll;
+    }
 }
 
 @media only screen and (max-width: 576px) {

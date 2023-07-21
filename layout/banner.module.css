@@ -66,8 +66,12 @@
 
     .wrapperImg img {
         height: auto;
-        width: 750px;
+        width: 100%;
         padding-top: 72px;
+    }
+
+    .wrapperImg {
+        width: 100%;
     }
 
     .wrapperText {
@@ -88,10 +92,14 @@
     .banner {
         padding: 48px 30px 56px;
       }
+
+    .wrapperImg {
+        width: 100%;
+    }
    
     .wrapperImg img {
         height: auto;
-        width: 315px;
+        width: 100%;
         padding-top: 49px;
     }
 }

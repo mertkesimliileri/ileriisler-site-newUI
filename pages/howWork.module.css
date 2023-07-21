@@ -42,7 +42,6 @@
 .contentWrapper h1 {
     font-weight: 500;
     font-size: 56px;
-    line-height: 84px;
     padding-bottom: 40px;
 }
 
@@ -210,6 +209,40 @@
         top: 266px;
     }
 
+
+    .circleWrapper:nth-child(1):after,
+    .circleWrapper:nth-child(3):after {
+        transform: rotate(160deg);
+        top: 30%;
+        left: 25%;
+    }
+
+    .circleWrapper:nth-child(2):after,
+    .circleWrapper:nth-child(4):after {
+        transform: rotate(185deg);
+        top: 25%;
+        left: 42%;
+    }
+
+    .circle {
+        width: 15vw;
+        height: 15vw;
+    }
+
+    .mainCircle {
+        width: 15vw;
+        height: 15vw;
+    }
+
+    .shadowCircle {
+        width: 15vw;
+        height: 15vw;
+    }
+
+    .pd32 {
+        padding: 0 32px;
+    }
+
     .bottomContent {
         padding: 100px 32px 80px;
     }
@@ -226,7 +259,7 @@
 
 @media only screen and (max-width: 576px) {
     .content {
-        max-width: 315px;
+       width: 100%;
     }
 
     .title {
@@ -241,6 +274,7 @@
         font-size: 36px;
     }
 
+    
     .contentWrapper p {
         font-size: 16px;
         line-height: 184.02%;
@@ -252,26 +286,22 @@
     }
 
     .circle {
-        width: 62px;
-        height: 62px;
+        width: 15vw;
+        height: 15vw;
     }
 
     .mainCircle {
-        width: 62px;
-        height: 62px;
+        width: 15vw;
+        height: 15vw;
     }
 
     .shadowCircle {
-        width: 62px;
-        height: 62px;
+        width: 15vw;
+        height: 15vw;
     }
 
     .circleWrapper p {
-        font-size: 14px;
-    }
-
-    .graphWrapper {
-        width: auto;
+        font-size: 12px;
     }
 
     .circleWrapper:nth-child(1):after,
@@ -308,4 +338,36 @@
         row-gap: 56px;
     }
     
+}
+
+@media (min-width:420px) and (max-width:576px) {
+    .circleWrapper:nth-child(1):after,
+    .circleWrapper:nth-child(3):after {
+        transform: rotate(137deg);
+        top: 37%;
+        left: -10%;
+    }
+
+    .circleWrapper:nth-child(2):after,
+    .circleWrapper:nth-child(4):after {
+        transform: rotate(210deg);
+        top: 13%;
+        left: -10%;
+    }
+}
+
+@media only screen and (max-width: 365px) {
+    .circleWrapper:nth-child(1):after,
+    .circleWrapper:nth-child(3):after {
+        transform: rotate(125deg);
+        top: 40%;
+        left: -65%;
+    }
+
+    .circleWrapper:nth-child(2):after,
+    .circleWrapper:nth-child(4):after {
+        transform: rotate(222deg);
+        top: 8%;
+        left: -67%;
+    }
 }

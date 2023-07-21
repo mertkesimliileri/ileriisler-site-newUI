@@ -195,4 +195,9 @@
         height: 1px;
         position: absolute;
     }
+
+    .form button {
+        width: 100%;
+    }
+
 }

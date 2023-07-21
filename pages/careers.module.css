@@ -286,11 +286,13 @@
         padding: 0 32px;
         align-items: normal;
         height: 280px;
+        width: auto;
     }
 
     .secondDivider div {
-        max-width: 750px;
+        width: 100%;
     }
+
 }
 
 @media only screen and (max-width: 576px) {
@@ -328,10 +330,6 @@
         overflow-x: scroll;
         max-width: 315px;
         justify-content: normal;
-    }
-
-    .secondDivider div {
-        max-width: 315px;
     }
 
     .secondDivider {

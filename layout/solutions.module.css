@@ -51,4 +51,8 @@
     .solutions {
         padding: 64px 13px;
        }
+
+    .header {
+        font-size: 45px;
+    }
   }

@@ -78,6 +78,10 @@
         padding-bottom: 40px;
     }
 
+    .text {
+        padding: 0 36px 20px;
+    }
+
     .image {
         width: 100%;
         height: auto;

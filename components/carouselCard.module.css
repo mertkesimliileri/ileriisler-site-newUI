@@ -41,8 +41,8 @@
  @media only screen and (max-width: 576px) {
     
     .card {
-        width: 110px;
-        height: 122px;
+        width: 30vw;
+        height: 35vw;
         padding: 0;
         align-items: center;
         justify-content: center;
