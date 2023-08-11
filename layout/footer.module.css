@@ -69,11 +69,6 @@
     padding-right: 183px;
 }
 
-.icon {
-    padding: 0 12px;
-    color: #233049;
-}
-
 .mobile {
     display: flex;
     flex-direction: column;

@@ -18,6 +18,11 @@ const Divider2 = () => {
         "title" : title.${locale},
         "text" : text.${locale},
         "buttonText" : buttonText.${locale},
+        "navButton": navButton[]->{
+          ...
+          pageName,
+          _id
+      }
       }`)
           .then((data) => setDivider(data))
           .catch(console.error);
@@ -29,7 +34,7 @@ const Divider2 = () => {
         <div className={styles.divider} key={index}>
           <h1 className={styles.title}>{post.title}</h1>
           <p className={styles.text}>{post.text}</p>
-          <Link href="/contact"><Button buttonType={3}>{post.buttonText}</Button></Link>
+          <Link href={"/pages/" + post.navButton[0]._id}><Button buttonType={3}>{post.buttonText}</Button></Link>
         </div>
         )}
     </div>

@@ -114,7 +114,7 @@
 
 .circleWrapper:nth-child(1):after,
 .circleWrapper:nth-child(3):after {
-    content: url("../public/Vector\ 5.png");
+    content: url("../../public/Vector\ 5.png");
     position: absolute;
     width: auto;
     height: auto;
@@ -126,7 +126,7 @@
 
 .circleWrapper:nth-child(2):after,
 .circleWrapper:nth-child(4):after {
-    content: url("../public/Vector\ 6.png");
+    content: url("../../public/Vector\ 6.png");
     position: absolute;
     width: auto;
     height: auto;
@@ -306,7 +306,7 @@
 
     .circleWrapper:nth-child(1):after,
     .circleWrapper:nth-child(3):after {
-        content: url("../public/Vector\ 5c.png");
+        content: url("../../public/Vector\ 5c.png");
         position: absolute;
         width: auto;
         height: auto;
@@ -318,7 +318,7 @@
 
     .circleWrapper:nth-child(2):after,
     .circleWrapper:nth-child(4):after {
-        content: url("../public/Vector\ 6c.png");
+        content: url("../../public/Vector\ 6c.png");
         position: absolute;
         width: auto;
         height: auto;

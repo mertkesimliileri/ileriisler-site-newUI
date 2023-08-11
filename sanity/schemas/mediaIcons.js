@@ -2,8 +2,8 @@ import { defineConfig } from 'sanity'
 
 export default defineConfig({
 
-    title: 'Brand image',
-    name: 'brand',
+    title: 'Social Media Icons',
+    name: 'mediaIcons',
     type: 'image',
     fields: [
         {
@@ -12,9 +12,10 @@ export default defineConfig({
             title: 'Caption',
         },
         {
-            name: 'attribution',
-            type: 'string',
-            title: 'Attribution',
+            name: 'iconUrl',
+            type: 'url',
+            title: 'Social Media Link',
+            validation: Rule => Rule.required(),
         }
     ]
 

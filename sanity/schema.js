@@ -8,11 +8,14 @@ import slider from "./schemas/slider"
 import sliderItem from "./schemas/sliderItem"
 import imageSection from "./schemas/imageSection"
 import divider2 from "./schemas/divider2"
-import aboutUs from "./schemas/aboutUs"
 import careers from "./schemas/careers"
 import position from "./schemas/position"
-import howWork from "./schemas/howWork"
 import contactUs from "./schemas/contactUs"
+import pageType1 from "./schemas/pageType1"
+import navigation  from "./schemas/navigation"
+import pageType2 from "./schemas/pageType2"
+import footerNavigation from "./schemas/footerNavigation"
+import mediaIcons from "./schemas/mediaIcons"
 
 export const schema = {
   types: [
@@ -26,10 +29,13 @@ export const schema = {
     sliderItem, 
     imageSection, 
     divider2, 
-    aboutUs, 
     careers, 
     position, 
-    howWork, 
-    contactUs
+    contactUs,
+    pageType1,
+    navigation,
+    pageType2,
+    footerNavigation,
+    mediaIcons
   ],
 }

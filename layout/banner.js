@@ -7,12 +7,13 @@ import sanityClient from "../sanity/lib/sanityClient"
 import bannerImg from "../public/bannerImg.png"
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Banner = () => {
 
   const [bannerData, setBanner] = useState(null);
   const router = useRouter();
-  const {locale} = router;
+  const { locale } = router;
 
   useEffect(() => {
     sanityClient.fetch(`*[_type == "homeBanner"]{
@@ -20,7 +21,12 @@ const Banner = () => {
     "text" : text.${locale},
     "title" : title.${locale},
     "titleBold" : titleBold.${locale},
-    "buttonText" : buttonText.${locale}
+    "buttonText" : buttonText.${locale},
+    "navButton": navButton[]->{
+      ...
+      pageName,
+      _id
+    }
     }`)
       .then((data) => setBanner(data))
       .catch(console.error);
@@ -34,7 +40,9 @@ const Banner = () => {
           <h1 className={styles.headerBld}>{post.title}</h1>
           <h1 className={styles.headerBld2}>{post.titleBold}</h1>
           <p className={styles.text}>{post.text}</p>
-          <Button buttonType={1}>{post.buttonText} <HiOutlineChevronRight className={styles.icon} /></Button>
+          <Link href={"/pages/" + post.navButton[0]._id}>
+            <Button buttonType={1}>{post.buttonText} <HiOutlineChevronRight className={styles.icon} /></Button>
+          </Link>
         </div>
         )}
       </div>

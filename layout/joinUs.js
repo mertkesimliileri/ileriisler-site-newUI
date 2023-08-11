@@ -25,7 +25,12 @@ const JoinUs = () => {
         "title" : title.${locale},
         "text" : text.${locale},
         "buttonText" : buttonText.${locale},
-        image
+        image,
+        "navButton": navButton[]->{
+          ...
+          pageName,
+          _id
+        }
         }`)
             .then((data) => setJoin(data))
             .catch(console.error);
@@ -48,7 +53,9 @@ const JoinUs = () => {
         <div key={index} className={styles.textWrapper}>
             <p className={styles.title}>{post.title}</p>
             <p className={styles.text}>{post.text}</p>
-            <Link href="/careers"><Button buttonType={4}>{post.buttonText}</Button></Link>
+            <Link href={"/pages/" + post.navButton[0]._id}>
+              <Button buttonType={4}>{post.buttonText}</Button>
+            </Link> 
         </div>
         )}
     </div>

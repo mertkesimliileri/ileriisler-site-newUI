@@ -1,12 +1,29 @@
 import { defineConfig } from 'sanity'
 
 export default defineConfig({
-    title: "How do we Work",
-    name: "howWork",
+    title: "Create Page Type 2",
+    name: "pageType2",
     type: "document",
     fields: [
         {
-            title: "How do we Work Banner",
+            title: "Page Name",
+            name: "pageName",
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string"
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string"
+                }
+            ]
+        },
+        {
+            title: "Banner",
             name: "banner",
             type: "image"
         },
@@ -222,7 +239,14 @@ export default defineConfig({
                     name: "en",
                     type: "string"
                 }
-            ]
+            ],
+            validation: (Rule) =>
+                Rule.custom((value) => {
+                    if (value && value?.length > 1) {
+                        return 'Only one page can be selected';
+                    }
+                    return true;
+                }),
         },
     ]
 })

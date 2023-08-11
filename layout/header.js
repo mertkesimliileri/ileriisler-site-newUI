@@ -9,6 +9,8 @@ import { usePathname } from 'next/navigation'
 import en from '../locales/en'
 import tr from '../locales/tr'
 import { CgClose } from "@react-icons/all-files/cg/CgClose";
+import sanityClient from '@/sanity/lib/sanityClient';
+import imageUrlBuilder from '@sanity/image-url'
 
 const Header = (props) => {
 
@@ -16,7 +18,10 @@ const Header = (props) => {
   const { locale } = router;
   const pathname = usePathname();
   const [localeText, setLocaleText] = useState("");
+  const [navigationData, setNavigation] = useState(null);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const builder = imageUrlBuilder(sanityClient);
+  const [mobile, setMobile] = useState(false);
   const t = locale === 'en' ? en : tr;
   let mobileIcon;
 
@@ -28,8 +33,27 @@ const Header = (props) => {
     }
   }, []);
 
+  useEffect(() => {
+    sanityClient.fetch(`*[_type=="navigation"]{
+      "navItems": navItems[]->{
+        ...
+        pageName,
+        _id
+      },
+      "navButton": navButton[]->{
+        ...
+        pageName,
+        _id
+      },
+      logo
+    }`)
+      .then((data) => setNavigation(data))
+      .catch(console.error);
+  }, []);
 
-  const [mobile, setMobile] = useState(false);
+
+
+
   let navStyle;
   let divider;
   let position;
@@ -53,6 +77,10 @@ const Header = (props) => {
     }
   }
 
+  function urlFor(source) {
+    return builder.image(source)
+  }
+
   const handleMobileMenu = () => {
     setMobileMenu(!mobileMenu);
   }
@@ -74,7 +102,7 @@ const Header = (props) => {
     <div style={{ position: position }} className={styles.header}>
       <div className={styles.logo}>
         <Link href="/">
-          <img src='https://www.ileriisler.com/storage/temp/public/imageresizecache/687/218/d69/687218d69094c0711c78d7da917b41022d25f6a2c85968887e62e96df8b2d5c3.png' alt='logo'></img>
+          {navigationData && <img src={urlFor(navigationData[0].logo.asset._ref).url()} alt='logo'></img> }
         </Link>
       </div>
       <div className={navStyle}>
@@ -85,14 +113,19 @@ const Header = (props) => {
           </div>
           :
           <>
-            <a>{t.nav1}</a>
-            <a>{t.nav2}</a>
-            <a>{t.nav3}</a>
-            <Link href="/careers">{t.nav4}</Link>
-            <Link style={{ borderRight: "1px solid " + divider }} className={styles.divider} href="/aboutUs">{t.nav5}</Link>
-            <Link href="/contact">
-              <Button buttonType={props.buttonType}>{t.nav6}</Button>
-            </Link>
+            {navigationData && navigationData[0].navItems.map((post, index) => {
+              if (index < navigationData[0].navItems.length - 1) {
+                return <Link key={index} href={"/pages/" + post._id}>{post[locale]}</Link>
+              } else {
+                return <Link key={index} style={{ borderRight: "1px solid " + divider }} className={styles.divider} href={"/pages/" + post._id}>{post[locale]}</Link>
+              }
+            }
+            )}
+            {navigationData && navigationData[0].navButton.map((post, index) =>
+              <Link key={index} href={"/pages/" + post._id}>
+                <Button buttonType={props.buttonType}>{post[locale]}</Button>
+              </Link>
+            )}
             <p onClick={changeLocale} className={styles.locale} style={{ marginRight: "100px", cursor: "pointer", color: divider, textTransform: "uppercase" }}>{localeText}</p>
           </>
         }
@@ -100,36 +133,13 @@ const Header = (props) => {
       </div>
       {mobileMenu ?
         <div className={styles.mobileNav}>
-          <a>
-            <div className={styles.mobileNavItem}>
-              {t.nav1}
-            </div>
-          </a>
-          <a>
-            <div className={styles.mobileNavItem}>
-              {t.nav2}
-            </div>
-          </a>
-          <a>
-            <div className={styles.mobileNavItem}>
-              {t.nav3}
-            </div>
-          </a>
-          <Link href="/careers">
-            <div className={styles.mobileNavItem}>
-              {t.nav4}
-            </div>
-          </Link>
-          <Link href="/aboutUs">
-            <div className={styles.mobileNavItem}>
-              {t.nav5}
-            </div>
-          </Link>
-          <Link href="/contact">
-            <div className={styles.mobileNavItem}>
-              {t.nav6}
-            </div>
-          </Link>
+          {navigationData && navigationData[0].navItems.map((post, index) =>
+            <Link key={index} href={"/pages/" + post._id}>
+              <div className={styles.mobileNavItem}>
+                {post[locale]}
+              </div>
+            </Link>
+          )}
         </div>
         : undefined
       }

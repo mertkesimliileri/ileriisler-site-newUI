@@ -6,6 +6,25 @@ export default defineConfig({
     type: "document",
     fields: [
         {
+            title: "Page Name",
+            name:  "pageName",
+            type: "object",
+            fields: [
+                {
+                    title: "Turkish",
+                    name: "tr",
+                    type: "string",
+                    initialValue: "Bize Ulaşın",
+                },
+                {
+                    title: "English",
+                    name: "en",
+                    type: "string",
+                    initialValue: "Contact Us",
+                }
+            ]
+        },
+        {
             title: "Title",
             name: "title",
             type: "object",
