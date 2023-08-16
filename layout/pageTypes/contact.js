@@ -15,6 +15,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import en from '@/locales/en'
 import tr from '@/locales/tr'
+import useCamelize from '@/hooks/useCamelize';
 
 const Contact = (props) => {
 
@@ -31,7 +32,12 @@ const Contact = (props) => {
         phone,
         mail,
         banner,
-        _id
+        _id,
+        "pageName" : pageName.${locale},
+        "pageNav": pageNav[]->{
+            ...
+            pageName,
+          }
         }`)
             .then((data) => setContact(data))
             .catch(console.error);
@@ -41,7 +47,7 @@ const Contact = (props) => {
         return builder.image(source)
     }
 
-    if (contactData && contactData.some(arr => arr._id === props.id)) {
+    if (contactData && contactData.some(arr => useCamelize(arr.pageName) === props.pageName)) {
         return (
             <div>
                 <Header buttonType={5} navType={2} />
@@ -57,11 +63,19 @@ const Contact = (props) => {
                         />
                     </div>
                 )}
-                <h1 className={styles.title}>{t.nav6}</h1>
+                {contactData && contactData.map((post, index) =>
+                    <h1 key={index} className={styles.title}>{post.pageName}</h1>
+                )}
                 <div className={styles.wrapper}>
                     <div className={styles.sections}>
-                        <Link className={styles.first} href="/howWork"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav7}</Link>
-                        <Link className={styles.second} href="/aboutUs">{t.nav5} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                        {contactData[0].pageNav && contactData[0].pageNav.map((post, index) => {
+                            if (index === 0) {
+                                return <Link key={index} className={styles.first} href={"/pages/" + useCamelize(post[locale])}><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{post[locale]}</Link>
+                            }
+                            if (index > 0) {
+                                return <Link key={index} className={styles.second} href={"/pages/" + useCamelize(post[locale])}>{post[locale]} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                            }
+                        })}
                     </div>
                     {contactData && contactData.map((post, index) =>
                         <div className={styles.texts} key={index}>

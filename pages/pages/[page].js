@@ -8,14 +8,14 @@ import { useRouter } from 'next/router'
 const Page = () => {
 
   const router = useRouter();
-  const id = router.query.page;
+  const pageName = router.query.page;
 
   return (
     <div>
-        <PageType1 id={id} />
-        <PageType2 id={id} />
-        <Careers id={id} />
-        <Contact id={id} />
+        <PageType1 pageName={pageName} />
+        <PageType2 pageName={pageName} />
+        <Careers pageName={pageName} />
+        <Contact pageName={pageName} />
     </div>
   )
 }

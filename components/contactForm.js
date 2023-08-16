@@ -61,7 +61,7 @@ const ContactForm = () => {
             e.preventDefault();
         }
         if (validation.email && validation.fname && validation.lname) {
-            await sendContactForm(values)
+            await sendContactForm(values);
         }
     }
 
@@ -78,7 +78,7 @@ const ContactForm = () => {
 
     return (
         <div>
-            <form className={styles.form}>
+            <form method="POST" className={styles.form}>
                 <div>
                     <label htmlFor="fname">{t.formFname} {displayRequired && !validation.fname ? <span>*</span> : undefined}</label>
                     <input className={styles.input} value={values.fname} onChange={handleChange} type="text" id="fname" name="fname" />

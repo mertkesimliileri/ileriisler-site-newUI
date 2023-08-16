@@ -116,7 +116,7 @@ const Form = (props) => {
     return (
         <div className={styles.formWrapper}>
             <h1>{t.formHeader}</h1>
-            <form className={styles.form}>
+            <form method="POST" className={styles.form}>
                 <div>
                     <label htmlFor="cv">{t.formCv} {displayRequired && !validation.cv ? <span>*</span> : undefined}</label>
                     <input ref={ref} onChange={handleChange} accept=".pdf" style={{ display: "none" }} type="file" id="cv" name="cv" />

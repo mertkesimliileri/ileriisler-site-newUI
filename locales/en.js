@@ -46,5 +46,7 @@ export default {
     contactİleri: "Contact İlerişler",
     openings: "Open Positions",
     project1: "New project",
-    project2: "Existing project"
+    project2: "Existing project",
+    formSuccess: "Form send successfully!",
+    formError: "Something went wrong"
 }

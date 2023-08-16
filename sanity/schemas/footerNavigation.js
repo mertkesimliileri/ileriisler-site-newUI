@@ -26,6 +26,12 @@ export default defineConfig({
             type: "string",
         },
         {
+            title: "Display column 1",
+            name: "column1Display",
+            type: "boolean",
+            initialValue: true
+        },
+        {
             title: "Column 1 title",
             name: "title1",
             type: "object",
@@ -74,6 +80,12 @@ export default defineConfig({
             ],
         },
         {
+            title: "Display column 2",
+            name: "column2Display",
+            type: "boolean",
+            initialValue: true
+        },
+        {
             title: "Column 2 title",
             name: "title2",
             type: "object",
@@ -120,6 +132,12 @@ export default defineConfig({
                     title: 'Add Careers Page'
                 },
             ],
+        },
+        {
+            title: "Display column 3",
+            name: "column3Display",
+            type: "boolean",
+            initialValue: true
         },
         {
             title: "Column 3 title",

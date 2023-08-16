@@ -5,6 +5,7 @@ import sanityClient from "../sanity/lib/sanityClient"
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
+import useCamelize from '@/hooks/useCamelize'
 
 
 const Divider = () => {
@@ -36,7 +37,7 @@ const Divider = () => {
                 <p className={styles.text}>{post.text}</p>
             </div>
             <div className={styles.button}>
-                <Link href={"/pages/" + post.navButton[0]._id}>
+                <Link href={"/pages/" + useCamelize(post.navButton[0][locale])}>
                     <Button buttonType={3}>{post.buttonText}</Button>
                 </Link>
             </div>

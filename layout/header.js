@@ -11,6 +11,7 @@ import tr from '../locales/tr'
 import { CgClose } from "@react-icons/all-files/cg/CgClose";
 import sanityClient from '@/sanity/lib/sanityClient';
 import imageUrlBuilder from '@sanity/image-url'
+import useCamelize from '@/hooks/useCamelize';
 
 const Header = (props) => {
 
@@ -115,14 +116,14 @@ const Header = (props) => {
           <>
             {navigationData && navigationData[0].navItems.map((post, index) => {
               if (index < navigationData[0].navItems.length - 1) {
-                return <Link key={index} href={"/pages/" + post._id}>{post[locale]}</Link>
+                return <Link key={index} href={"/pages/" + useCamelize(post[locale])}>{post[locale]}</Link>
               } else {
-                return <Link key={index} style={{ borderRight: "1px solid " + divider }} className={styles.divider} href={"/pages/" + post._id}>{post[locale]}</Link>
+                return <Link key={index} style={{ borderRight: "1px solid " + divider }} className={styles.divider} href={"/pages/" + useCamelize(post[locale])}>{post[locale]}</Link>
               }
             }
             )}
             {navigationData && navigationData[0].navButton.map((post, index) =>
-              <Link key={index} href={"/pages/" + post._id}>
+              <Link key={index} href={"/pages/" + useCamelize(post[locale])}>
                 <Button buttonType={props.buttonType}>{post[locale]}</Button>
               </Link>
             )}
@@ -134,7 +135,7 @@ const Header = (props) => {
       {mobileMenu ?
         <div className={styles.mobileNav}>
           {navigationData && navigationData[0].navItems.map((post, index) =>
-            <Link key={index} href={"/pages/" + post._id}>
+            <Link key={index} href={"/pages/" + useCamelize(post[locale])}>
               <div className={styles.mobileNavItem}>
                 {post[locale]}
               </div>

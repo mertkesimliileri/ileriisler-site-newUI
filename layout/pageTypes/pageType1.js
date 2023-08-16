@@ -14,6 +14,7 @@ import Footer from '@/layout/footer'
 import { useRouter } from 'next/router'
 import en from '@/locales/en'
 import tr from '@/locales/tr'
+import useCamelize from '@/hooks/useCamelize'
 
 
 const PageType1 = (props) => {
@@ -43,6 +44,11 @@ const PageType1 = (props) => {
       "navButton": navButton[]->{
         ...
         pageName,
+        _id,
+      },
+      "pageNav": pageNav[]->{
+        ...
+        pageName,
         _id
       }
       }`)
@@ -50,10 +56,10 @@ const PageType1 = (props) => {
             .catch(console.error);
     }, []);
 
-    if (pageData && pageData.some(arr => arr._id === props.id)) {
+    if (pageData && pageData.some(arr => useCamelize(arr.pageName) === props.pageName)) {
         return (
             <div>
-                {pageData && pageData.filter(arr => arr._id === props.id).map((post, index) =>
+                {pageData && pageData.filter(arr => useCamelize(arr.pageName) === props.pageName).map((post, index) =>
                     <div key={index}>
                         <Header buttonType={5} navType={2} />
     
@@ -71,8 +77,14 @@ const PageType1 = (props) => {
                         <div style={{ display: "flex", justifyContent: "center" }}>
                             <div className={styles.content}>
                                 <div className={styles.sections}>
-                                    <Link className={styles.first} href="/careers"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav4}</Link>
-                                    <Link className={styles.second} href="/howWork">{t.nav7} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                                    {post.pageNav && post.pageNav.map((page, index) => {
+                                        if(index === 0) {
+                                           return  <Link key={index} className={styles.first} href={"/pages/" + useCamelize(page[locale])}><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{page[locale]}</Link> 
+                                        }
+                                        if(index > 0) {
+                                            return <Link key={index} className={styles.second} href={"/pages/" + useCamelize(page[locale])}>{page[locale]} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                                        }
+                                    })}
                                 </div>
                                 <div className={styles.contentWrapper}>
                                     <div>
@@ -87,7 +99,7 @@ const PageType1 = (props) => {
                         </div>
                         <div className={styles.divider}>
                             <h1 className={styles.dividerText}>{post.text}</h1>
-                            <Link href={"/pages/" + post.navButton[0]._id}><Button buttonType={6}>{post.buttonText}</Button></Link>
+                            <Link href={"/pages/" + useCamelize(post.navButton[0][locale])}><Button buttonType={6}>{post.buttonText}</Button></Link>
                         </div>
                         <Footer hideColumns={true} />
                     </div>

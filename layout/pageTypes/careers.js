@@ -18,6 +18,7 @@ import { useRouter } from 'next/router'
 import en from '@/locales/en'
 import tr from '@/locales/tr'
 import { useRef } from 'react';
+import useCamelize from '@/hooks/useCamelize'
 
 const Careers = (props) => {
 
@@ -51,7 +52,12 @@ const Careers = (props) => {
       "secondText" : secondText.${locale},
       "secondTitle" : secondTitle.${locale},
       card,
-      _id
+      _id,
+      "pageName" : pageName.${locale},
+      "pageNav": pageNav[]->{
+        ...
+        pageName,
+      }
       }`)
             .then((data) => setCareers(data))
             .catch(console.error);
@@ -76,7 +82,7 @@ const Careers = (props) => {
         }, 300)
     }
 
-    if (careersData && careersData.some(arr => arr._id === props.id)) {
+    if (careersData && careersData.some(arr => useCamelize(arr.pageName) === props.pageName)) {
         return (
             <div>
                 <Header buttonType={5} navType={2} />
@@ -98,8 +104,14 @@ const Careers = (props) => {
                         <div style={{ display: "flex", justifyContent: "center" }}>
                             <div className={styles.content}>
                                 <div className={styles.sections}>
-                                    <Link className={styles.first} href="/aboutUs"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav5}</Link>
-                                    <Link className={styles.second} href="/contact">{t.nav6} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                                    {careersData[0].pageNav && careersData[0].pageNav.map((post, index) => {
+                                        if (index === 0) {
+                                            return <Link key={index} className={styles.first} href={"/pages/" + useCamelize(post[locale])}><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{post[locale]}</Link>
+                                        }
+                                        if (index > 0) {
+                                            return <Link key={index} className={styles.second} href={"/pages/" + useCamelize(post[locale])}>{post[locale]} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                                        }
+                                    })}
                                 </div>
                                 <div className={styles.contentWrapper}>
                                     {careersData && careersData.map((post, index) =>

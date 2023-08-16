@@ -23,6 +23,9 @@ const ContactUsFrom = () => {
 
   const [state, setState] = useState(initState);
   const [checkBox, setCheckBox] = useState(true);
+  const [message, setMessage] = useState('');
+  const [showError, setShowError] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [validation, setValidation] = useState({
     fname: false,
     lname: false,
@@ -65,11 +68,20 @@ const ContactUsFrom = () => {
 
   const onSubmit = async (e) => {
     setDisplayRequired(true);
+    e.preventDefault();
     if(!validation.fname || !validation.lname || !validation.email) {
       e.preventDefault();
     }
     if (validation.email && validation.fname && validation.lname) {
-      await sendContactUsForm(values)
+      await sendContactUsForm(values).then((res) => {
+        if(res.success) {
+          setMessage(t.formSuccess);
+          setShowSuccess(true)
+        } else {
+          setMessage(t.formError);
+          setShowSuccess(true);
+        }
+      });
     }
   }
 
@@ -80,7 +92,7 @@ const ContactUsFrom = () => {
 
   return (
     <div>
-      <form className={styles.form}>
+      <form method="POST" className={styles.form}>
         <div className={styles.row}>
           <div>
             <label htmlFor="fname">{t.formFname} {displayRequired && !validation.fname ? <span>*</span> : undefined} </label>
@@ -119,6 +131,12 @@ const ContactUsFrom = () => {
           <input type="checkbox" id="confirm" name="confirm" value={checkBox} onChange={handleChange} />
           <label htmlFor="confirm">{t.formCheckbox}</label>
         </div>
+        {showError && 
+          <p style={{color:'#C20713'}}>{message}</p>
+        }
+        {showSuccess && 
+          <p style={{color:'#6CBA9F'}}>{message}</p>
+        }
         <div className={styles.buttonRow}>
           <input disabled={!validation.fname || !validation.lname || !validation.email ? true : false} className={styles.button} onClick={(e)=> onSubmit(e)} type="submit" value={t.formSend} />
         </div>

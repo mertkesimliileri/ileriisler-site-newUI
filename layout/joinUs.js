@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import imageUrlBuilder from '@sanity/image-url'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import useCamelize from '@/hooks/useCamelize'
 
 const JoinUs = () => {
 
@@ -53,7 +54,7 @@ const JoinUs = () => {
         <div key={index} className={styles.textWrapper}>
             <p className={styles.title}>{post.title}</p>
             <p className={styles.text}>{post.text}</p>
-            <Link href={"/pages/" + post.navButton[0]._id}>
+            <Link href={"/pages/" + useCamelize(post.navButton[0][locale])}>
               <Button buttonType={4}>{post.buttonText}</Button>
             </Link> 
         </div>

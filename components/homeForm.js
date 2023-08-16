@@ -65,7 +65,7 @@ const HomeForm = (props) => {
 
   return (
     <div>
-      <form className={styles.form}>
+      <form method="POST" className={styles.form}>
         <div className={styles.row}>
           <div>
             <label htmlFor="fname">First Name {displayRequired && !validation.fname ? <span>*</span> : undefined}</label>

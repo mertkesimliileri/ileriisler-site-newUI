@@ -13,6 +13,7 @@ import tr from '../locales/tr'
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { getImageDimensions } from '@sanity/asset-utils'
+import useCamelize from '@/hooks/useCamelize';
 
 
 const Footer = (props) => {
@@ -81,12 +82,15 @@ const Footer = (props) => {
             _id
           },
           socialMedia,
-          title1,
-          title2,
-          title3,
+          "title1" : title1.${locale},
+          "title2" : title2.${locale},
+          "title3" : title3.${locale},
           name,
           address,
           phone,
+          column1Display,
+          column2Display,
+          column3Display
         }`)
             .then((data) => setFooterNavigation(data))
             .catch(console.error);
@@ -111,12 +115,12 @@ const Footer = (props) => {
             {mobile ? <div className={styles.mobile}>
                 <div className={styles.logo}>
                     <Link href="/">
-                        {navigationData && <img src={urlFor(navigationData[0].logo.asset._ref).url()} alt='logo'></img> }
+                        {navigationData && <img src={urlFor(navigationData[0].logo.asset._ref).url()} alt='logo'></img>}
                     </Link>
                 </div>
                 <div className={styles.menu}>
                     {navigationData && navigationData[0].navItems.map((post, index) =>
-                        <Link key={index} href={"/pages/" + post._id}>{post[locale]}</Link>
+                        <Link key={index} href={"/pages/" + useCamelize(post[locale])}>{post[locale]}</Link>
                     )}
                 </div>
                 <div className={styles.icons}>
@@ -146,36 +150,48 @@ const Footer = (props) => {
                             <p style={{ paddingBottom: "23px" }} className={styles.text}>{footerNavigationData && <>{footerNavigationData[0].mail}</>}</p>
                             <p className={styles.text}>{footerNavigationData && <>{footerNavigationData[0].phone}</>}</p>
                         </div>
-                        <div className={styles.column}>
-                            <h2 className={styles.subTitle}>Information</h2>
-                            {footerNavigationData && footerNavigationData[0].firstColumn.map((post, index) =>
-                                <Link key={index} href={"/pages/" + post._id}>
-                                    <p className={styles.text}>
-                                        {post[locale]}
-                                    </p>
-                                </Link>
-                            )}
-                        </div>
-                        <div className={styles.column}>
-                            <h2 className={styles.subTitle}>Services</h2>
-                            {footerNavigationData && footerNavigationData[0].secondColumn.map((post, index) =>
-                                <Link key={index} href={"/pages/" + post._id}>
-                                    <p className={styles.text}>
-                                        {post[locale]}
-                                    </p>
-                                </Link>
-                            )}
-                        </div>
-                        <div className={styles.column}>
-                            <h2 className={styles.subTitle}>Support</h2>
-                            {footerNavigationData && footerNavigationData[0].thirdColumn.map((post, index) =>
-                                <Link key={index} href={"/pages/" + post._id}>
-                                    <p className={styles.text}>
-                                        {post[locale]}
-                                    </p>
-                                </Link>
-                            )}
-                        </div>
+                        {footerNavigationData && footerNavigationData[0].column1Display ?
+                            <div className={styles.column}>
+                                {footerNavigationData && footerNavigationData.map((post, index) =>
+                                    <h2 key={index} className={styles.subTitle}>{post.title1}</h2>
+                                )}
+                                {footerNavigationData && footerNavigationData[0].firstColumn.map((post, index) =>
+                                    <Link key={index} href={"/pages/" + useCamelize(post[locale])}>
+                                        <p className={styles.text}>
+                                            {post[locale]}
+                                        </p>
+                                    </Link>
+                                )}
+                            </div> : undefined
+                        }
+                        {footerNavigationData && footerNavigationData[0].column2Display ?
+                            <div className={styles.column}>
+                                {footerNavigationData && footerNavigationData.map((post, index) =>
+                                    <h2 key={index} className={styles.subTitle}>{post.title2}</h2>
+                                )}
+                                {footerNavigationData && footerNavigationData[0].secondColumn.map((post, index) =>
+                                    <Link key={index} href={"/pages/" + useCamelize(post[locale])}>
+                                        <p className={styles.text}>
+                                            {post[locale]}
+                                        </p>
+                                    </Link>
+                                )}
+                            </div> : undefined
+                        }
+                        {footerNavigationData && footerNavigationData[0].column3Display ?
+                            <div className={styles.column}>
+                                {footerNavigationData && footerNavigationData.map((post, index) =>
+                                    <h2 key={index} className={styles.subTitle}>{post.title3}</h2>
+                                )}
+                                {footerNavigationData && footerNavigationData[0].thirdColumn.map((post, index) =>
+                                    <Link key={index} href={"/pages/" + useCamelize(post[locale])}>
+                                        <p className={styles.text}>
+                                            {post[locale]}
+                                        </p>
+                                    </Link>
+                                )}
+                            </div> : undefined
+                        }
                     </div>
                     <div className={styles.bottomRow}>
                         <p className={styles.trademark1}>{footerNavigationData && <>{"©" + footerNavigationData[0].name}</>}</p>

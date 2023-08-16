@@ -14,6 +14,7 @@ import ContactForm from '@/components/contactForm';
 import { useRouter } from 'next/router';
 import en from '@/locales/en'
 import tr from '@/locales/tr'
+import useCamelize from '@/hooks/useCamelize';
 
 const PageType2 = (props) => {
     const [pageData, setPageData] = useState(null);
@@ -46,131 +47,141 @@ const PageType2 = (props) => {
       "rightTitle" : rightTitle.${locale},
       "leftText" : leftText.${locale},
       "rightText" : rightText.${locale},
-      _id
+      _id,
+      "pageNav": pageNav[]->{
+        ...
+        pageName,
+      }
       }`)
             .then((data) => setPageData(data))
             .catch(console.error);
     }, [])
 
-    if (pageData && pageData.some(arr => arr._id === props.id)) {
+    if (pageData && pageData.some(arr => useCamelize(arr.pageName) === props.pageName)) {
         return (
             <>
-                {pageData && pageData.filter(arr => arr._id === props.id).map((post, index) =>
+                {pageData && pageData.filter(arr => useCamelize(arr.pageName) === props.pageName).map((post, index) =>
                     <div key={index}>
                         <Header buttonType={5} navType={2} />
-                            <div className={styles.imageWrapper}>
-                                <Image
-                                    src={urlFor(post.banner.asset._ref).url()}
-                                    alt="banner"
-                                    width={1441}
-                                    height={400}
-                                    sizes="100vw"
-                                    style={{ width: '100%', height: '400px', position: "absolute" }}
-                                />
-                            </div>
+                        <div className={styles.imageWrapper}>
+                            <Image
+                                src={urlFor(post.banner.asset._ref).url()}
+                                alt="banner"
+                                width={1441}
+                                height={400}
+                                sizes="100vw"
+                                style={{ width: '100%', height: '400px', position: "absolute" }}
+                            />
+                        </div>
                         <h1 className={styles.title}>{post.pageName}</h1>
                         <div className={styles.pd32} style={{ display: "flex", justifyContent: "center" }}>
                             <div className={styles.content}>
                                 <div className={styles.sections}>
-                                    <Link className={styles.first} href="/aboutUs"><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{t.nav5}</Link>
-                                    <Link className={styles.second} href="/careers">{t.nav4} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                                    {post.pageNav && post.pageNav.map((page, index) => {
+                                        if (index === 0) {
+                                            return <Link key={index} className={styles.first} href={"/pages/" + useCamelize(page[locale])}><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{page[locale]}</Link>
+                                        }
+                                        if (index > 0) {
+                                            return <Link key={index} className={styles.second} href={"/pages/" + useCamelize(page[locale])}>{page[locale]} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                                        }
+                                    })}
                                 </div>
                                 <div className={styles.contentWrapper}>
-                                        <SanityBlockContent blocks={post.content} />
+                                    <SanityBlockContent blocks={post.content} />
                                 </div>
-                                    <div className={styles.graphWrapper}>
-                                        <div style={{ paddingTop: "92px" }} className={styles.circleWrapper}>
-                                            <div className={styles.circle}>
-                                                <div className={styles.mainCircle}>
-                                                    <div className={styles.shadowCircle}>
-                                                        <Image
-                                                            src={urlFor(post.circle1Img.asset._ref).url()}
-                                                            alt="icon"
-                                                            width={32}
-                                                            height={32}
-                                                        />
-                                                    </div>
+                                <div className={styles.graphWrapper}>
+                                    <div style={{ paddingTop: "92px" }} className={styles.circleWrapper}>
+                                        <div className={styles.circle}>
+                                            <div className={styles.mainCircle}>
+                                                <div className={styles.shadowCircle}>
+                                                    <Image
+                                                        src={urlFor(post.circle1Img.asset._ref).url()}
+                                                        alt="icon"
+                                                        width={32}
+                                                        height={32}
+                                                    />
                                                 </div>
                                             </div>
-                                            <p>{post.circle1Text}</p>
                                         </div>
-                                        <div className={styles.circleWrapper}>
-                                            <div className={styles.circle}>
-                                                <div className={styles.mainCircle}>
-                                                    <div className={styles.shadowCircle}>
-                                                        <Image
-                                                            src={urlFor(post.circle2Img.asset._ref).url()}
-                                                            alt="icon"
-                                                            width={32}
-                                                            height={32}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p>{post.circle2Text}</p>
-                                        </div>
-                                        <div style={{ paddingTop: "92px" }} className={styles.circleWrapper}>
-                                            <div className={styles.circle}>
-                                                <div className={styles.mainCircle}>
-                                                    <div className={styles.shadowCircle}>
-                                                        <Image
-                                                            src={urlFor(post.circle3Img.asset._ref).url()}
-                                                            alt="icon"
-                                                            width={32}
-                                                            height={32}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p>{post.circle3Text}</p>
-                                        </div>
-                                        <div className={styles.circleWrapper}>
-                                            <div className={styles.circle}>
-                                                <div className={styles.mainCircle}>
-                                                    <div className={styles.shadowCircle}>
-                                                        <Image
-                                                            src={urlFor(post.circle4Img.asset._ref).url()}
-                                                            alt="icon"
-                                                            width={32}
-                                                            height={32}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p>{post.circle4Text}</p>
-                                        </div>
-                                        <div style={{ paddingTop: "92px" }} className={styles.circleWrapper}>
-                                            <div className={styles.circle}>
-                                                <div className={styles.mainCircle}>
-                                                    <div className={styles.shadowCircle}>
-                                                        <Image
-                                                            src={urlFor(post.circle5Img.asset._ref).url()}
-                                                            alt="icon"
-                                                            width={32}
-                                                            height={32}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p>{post.circle5Text}</p>
-                                        </div>
+                                        <p>{post.circle1Text}</p>
                                     </div>
+                                    <div className={styles.circleWrapper}>
+                                        <div className={styles.circle}>
+                                            <div className={styles.mainCircle}>
+                                                <div className={styles.shadowCircle}>
+                                                    <Image
+                                                        src={urlFor(post.circle2Img.asset._ref).url()}
+                                                        alt="icon"
+                                                        width={32}
+                                                        height={32}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>{post.circle2Text}</p>
+                                    </div>
+                                    <div style={{ paddingTop: "92px" }} className={styles.circleWrapper}>
+                                        <div className={styles.circle}>
+                                            <div className={styles.mainCircle}>
+                                                <div className={styles.shadowCircle}>
+                                                    <Image
+                                                        src={urlFor(post.circle3Img.asset._ref).url()}
+                                                        alt="icon"
+                                                        width={32}
+                                                        height={32}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>{post.circle3Text}</p>
+                                    </div>
+                                    <div className={styles.circleWrapper}>
+                                        <div className={styles.circle}>
+                                            <div className={styles.mainCircle}>
+                                                <div className={styles.shadowCircle}>
+                                                    <Image
+                                                        src={urlFor(post.circle4Img.asset._ref).url()}
+                                                        alt="icon"
+                                                        width={32}
+                                                        height={32}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>{post.circle4Text}</p>
+                                    </div>
+                                    <div style={{ paddingTop: "92px" }} className={styles.circleWrapper}>
+                                        <div className={styles.circle}>
+                                            <div className={styles.mainCircle}>
+                                                <div className={styles.shadowCircle}>
+                                                    <Image
+                                                        src={urlFor(post.circle5Img.asset._ref).url()}
+                                                        alt="icon"
+                                                        width={32}
+                                                        height={32}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>{post.circle5Text}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div style={{ display: "flex", justifyContent: "center", background: "#F1F3F8" }}>
-                                <div className={styles.bottomContent}>
-                                    <p className={styles.bottomText}>{post.text}</p>
-                                    <div className={styles.textWrapper}>
-                                        <div className={styles.box}>
-                                            <h3>{post.leftTitle}</h3>
-                                            <p>{post.leftText}</p>
-                                        </div>
-                                        <div className={styles.box}>
-                                            <h3>{post.rightTitle}</h3>
-                                            <p>{post.rightText}</p>
-                                        </div>
+                            <div className={styles.bottomContent}>
+                                <p className={styles.bottomText}>{post.text}</p>
+                                <div className={styles.textWrapper}>
+                                    <div className={styles.box}>
+                                        <h3>{post.leftTitle}</h3>
+                                        <p>{post.leftText}</p>
+                                    </div>
+                                    <div className={styles.box}>
+                                        <h3>{post.rightTitle}</h3>
+                                        <p>{post.rightText}</p>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                         <div style={{ display: "flex", justifyContent: "center", background: "#6CBA9F" }}>
                             <div className={styles.contactWrapper}>

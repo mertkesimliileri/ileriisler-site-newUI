@@ -8,6 +8,7 @@ import bannerImg from "../public/bannerImg.png"
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import useCamelize from '@/hooks/useCamelize';
 
 const Banner = () => {
 
@@ -23,8 +24,8 @@ const Banner = () => {
     "titleBold" : titleBold.${locale},
     "buttonText" : buttonText.${locale},
     "navButton": navButton[]->{
-      ...
-      pageName,
+    ...
+    pageName,
       _id
     }
     }`)
@@ -40,7 +41,7 @@ const Banner = () => {
           <h1 className={styles.headerBld}>{post.title}</h1>
           <h1 className={styles.headerBld2}>{post.titleBold}</h1>
           <p className={styles.text}>{post.text}</p>
-          <Link href={"/pages/" + post.navButton[0]._id}>
+          <Link href={"/pages/" + useCamelize(post.navButton[0][locale])}>
             <Button buttonType={1}>{post.buttonText} <HiOutlineChevronRight className={styles.icon} /></Button>
           </Link>
         </div>
