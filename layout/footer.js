@@ -120,7 +120,7 @@ const Footer = (props) => {
                 </div>
                 <div className={styles.menu}>
                     {navigationData && navigationData[0].navItems.map((post, index) =>
-                        <Link key={index} href={"/pages/" + useCamelize(post[locale])}>{post[locale]}</Link>
+                        <Link key={index} href={"/pages/" + useCamelize(post.en)}>{post[locale]}</Link>
                     )}
                 </div>
                 <div className={styles.icons}>
@@ -156,7 +156,7 @@ const Footer = (props) => {
                                     <h2 key={index} className={styles.subTitle}>{post.title1}</h2>
                                 )}
                                 {footerNavigationData && footerNavigationData[0].firstColumn.map((post, index) =>
-                                    <Link key={index} href={"/pages/" + useCamelize(post[locale])}>
+                                    <Link key={index} href={"/pages/" + useCamelize(post.en)}>
                                         <p className={styles.text}>
                                             {post[locale]}
                                         </p>
@@ -170,7 +170,7 @@ const Footer = (props) => {
                                     <h2 key={index} className={styles.subTitle}>{post.title2}</h2>
                                 )}
                                 {footerNavigationData && footerNavigationData[0].secondColumn.map((post, index) =>
-                                    <Link key={index} href={"/pages/" + useCamelize(post[locale])}>
+                                    <Link key={index} href={"/pages/" + useCamelize(post.en)}>
                                         <p className={styles.text}>
                                             {post[locale]}
                                         </p>
@@ -184,7 +184,7 @@ const Footer = (props) => {
                                     <h2 key={index} className={styles.subTitle}>{post.title3}</h2>
                                 )}
                                 {footerNavigationData && footerNavigationData[0].thirdColumn.map((post, index) =>
-                                    <Link key={index} href={"/pages/" + useCamelize(post[locale])}>
+                                    <Link key={index} href={"/pages/" + useCamelize(post.en)}>
                                         <p className={styles.text}>
                                             {post[locale]}
                                         </p>

@@ -116,14 +116,14 @@ const Header = (props) => {
           <>
             {navigationData && navigationData[0].navItems.map((post, index) => {
               if (index < navigationData[0].navItems.length - 1) {
-                return <Link key={index} href={"/pages/" + useCamelize(post[locale])}>{post[locale]}</Link>
+                return <Link key={index} href={"/pages/" + useCamelize(post.en)}>{post[locale]}</Link>
               } else {
-                return <Link key={index} style={{ borderRight: "1px solid " + divider }} className={styles.divider} href={"/pages/" + useCamelize(post[locale])}>{post[locale]}</Link>
+                return <Link key={index} style={{ borderRight: "1px solid " + divider }} className={styles.divider} href={"/pages/" + useCamelize(post.en)}>{post[locale]}</Link>
               }
             }
             )}
             {navigationData && navigationData[0].navButton.map((post, index) =>
-              <Link key={index} href={"/pages/" + useCamelize(post[locale])}>
+              <Link key={index} href={"/pages/" + useCamelize(post.en)}>
                 <Button buttonType={props.buttonType}>{post[locale]}</Button>
               </Link>
             )}
@@ -135,7 +135,7 @@ const Header = (props) => {
       {mobileMenu ?
         <div className={styles.mobileNav}>
           {navigationData && navigationData[0].navItems.map((post, index) =>
-            <Link key={index} href={"/pages/" + useCamelize(post[locale])}>
+            <Link key={index} href={"/pages/" + useCamelize(post.en)}>
               <div className={styles.mobileNavItem}>
                 {post[locale]}
               </div>

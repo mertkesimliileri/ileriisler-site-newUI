@@ -54,7 +54,7 @@ const JoinUs = () => {
         <div key={index} className={styles.textWrapper}>
             <p className={styles.title}>{post.title}</p>
             <p className={styles.text}>{post.text}</p>
-            <Link href={"/pages/" + useCamelize(post.navButton[0][locale])}>
+            <Link href={"/pages/" + useCamelize(post.navButton[0].en)}>
               <Button buttonType={4}>{post.buttonText}</Button>
             </Link> 
         </div>

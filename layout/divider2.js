@@ -35,7 +35,7 @@ const Divider2 = () => {
         <div className={styles.divider} key={index}>
           <h1 className={styles.title}>{post.title}</h1>
           <p className={styles.text}>{post.text}</p>
-          <Link href={"/pages/" + useCamelize(post.navButton[0][locale])}><Button buttonType={3}>{post.buttonText}</Button></Link>
+          <Link href={"/pages/" + useCamelize(post.navButton[0].en)}><Button buttonType={3}>{post.buttonText}</Button></Link>
         </div>
         )}
     </div>

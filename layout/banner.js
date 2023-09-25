@@ -41,7 +41,7 @@ const Banner = () => {
           <h1 className={styles.headerBld}>{post.title}</h1>
           <h1 className={styles.headerBld2}>{post.titleBold}</h1>
           <p className={styles.text}>{post.text}</p>
-          <Link href={"/pages/" + useCamelize(post.navButton[0][locale])}>
+          <Link href={"/pages/" + useCamelize(post.navButton[0].en)}>
             <Button buttonType={1}>{post.buttonText} <HiOutlineChevronRight className={styles.icon} /></Button>
           </Link>
         </div>

@@ -33,7 +33,7 @@ const Contact = (props) => {
         mail,
         banner,
         _id,
-        "pageName" : pageName.${locale},
+        "pageName" : pageName,
         "pageNav": pageNav[]->{
             ...
             pageName,
@@ -47,7 +47,7 @@ const Contact = (props) => {
         return builder.image(source)
     }
 
-    if (contactData && contactData.some(arr => useCamelize(arr.pageName) === props.pageName)) {
+    if (contactData && contactData.some(arr => useCamelize(arr.pageName.en) === props.pageName)) {
         return (
             <div>
                 <Header buttonType={5} navType={2} />
@@ -64,16 +64,16 @@ const Contact = (props) => {
                     </div>
                 )}
                 {contactData && contactData.map((post, index) =>
-                    <h1 key={index} className={styles.title}>{post.pageName}</h1>
+                    <h1 key={index} className={styles.title}>{post.pageName[locale]}</h1>
                 )}
                 <div className={styles.wrapper}>
                     <div className={styles.sections}>
                         {contactData[0].pageNav && contactData[0].pageNav.map((post, index) => {
                             if (index === 0) {
-                                return <Link key={index} className={styles.first} href={"/pages/" + useCamelize(post[locale])}><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{post[locale]}</Link>
+                                return <Link key={index} className={styles.first} href={"/pages/" + useCamelize(post.en)}><HiChevronLeft style={{ marginRight: "10px", verticalAlign: "middle", color: "#C20713" }} />{post[locale]}</Link>
                             }
                             if (index > 0) {
-                                return <Link key={index} className={styles.second} href={"/pages/" + useCamelize(post[locale])}>{post[locale]} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
+                                return <Link key={index} className={styles.second} href={"/pages/" + useCamelize(post.en)}>{post[locale]} <HiChevronRight style={{ marginLeft: "10px", verticalAlign: "middle", color: "#C20713" }} /></Link>
                             }
                         })}
                     </div>

@@ -29,7 +29,7 @@ const PageType2 = (props) => {
 
     useEffect(() => {
         sanityClient.fetch(`*[_type == "pageType2"]{
-      "pageName" : pageName.${locale},
+      "pageName" : pageName,
       banner,
       "content" : content.${locale},
       circle1Img,
@@ -57,10 +57,10 @@ const PageType2 = (props) => {
             .catch(console.error);
     }, [])
 
-    if (pageData && pageData.some(arr => useCamelize(arr.pageName) === props.pageName)) {
+    if (pageData && pageData.some(arr => useCamelize(arr.pageName.en) === props.pageName)) {
         return (
             <>
-                {pageData && pageData.filter(arr => useCamelize(arr.pageName) === props.pageName).map((post, index) =>
+                {pageData && pageData.filter(arr => useCamelize(arr.pageName.en) === props.pageName).map((post, index) =>
                     <div key={index}>
                         <Header buttonType={5} navType={2} />
                         <div className={styles.imageWrapper}>
@@ -73,7 +73,7 @@ const PageType2 = (props) => {
                                 style={{ width: '100%', height: '400px', position: "absolute" }}
                             />
                         </div>
-                        <h1 className={styles.title}>{post.pageName}</h1>
+                        <h1 className={styles.title}>{post.pageName[locale]}</h1>
                         <div className={styles.pd32} style={{ display: "flex", justifyContent: "center" }}>
                             <div className={styles.content}>
                                 <div className={styles.sections}>

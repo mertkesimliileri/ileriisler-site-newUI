@@ -33,7 +33,7 @@ const PageType1 = (props) => {
     useEffect(() => {
         sanityClient.fetch(`*[_type == "pageType1"]{
       banner,
-      "pageName" : pageName.${locale},
+      "pageName" : pageName,
       "content1" : content1.${locale},
       "content2" : content2.${locale},
       "text" : text.${locale},
@@ -56,10 +56,10 @@ const PageType1 = (props) => {
             .catch(console.error);
     }, []);
 
-    if (pageData && pageData.some(arr => useCamelize(arr.pageName) === props.pageName)) {
+    if (pageData && pageData.some(arr => useCamelize(arr.pageName.en) === props.pageName)) {
         return (
             <div>
-                {pageData && pageData.filter(arr => useCamelize(arr.pageName) === props.pageName).map((post, index) =>
+                {pageData && pageData.filter(arr => useCamelize(arr.pageName.en) === props.pageName).map((post, index) =>
                     <div key={index}>
                         <Header buttonType={5} navType={2} />
     
@@ -73,7 +73,7 @@ const PageType1 = (props) => {
                                 style={{ width: '100%', position: "absolute" }}
                             />
                         </div>
-                        <h1 className={styles.title}>{post.pageName}</h1>
+                        <h1 className={styles.title}>{post.pageName[locale]}</h1>
                         <div style={{ display: "flex", justifyContent: "center" }}>
                             <div className={styles.content}>
                                 <div className={styles.sections}>
@@ -99,7 +99,7 @@ const PageType1 = (props) => {
                         </div>
                         <div className={styles.divider}>
                             <h1 className={styles.dividerText}>{post.text}</h1>
-                            <Link href={"/pages/" + useCamelize(post.navButton[0][locale])}><Button buttonType={6}>{post.buttonText}</Button></Link>
+                            <Link href={"/pages/" + useCamelize(post.navButton[0].en)}><Button buttonType={6}>{post.buttonText}</Button></Link>
                         </div>
                         <Footer hideColumns={true} />
                     </div>
