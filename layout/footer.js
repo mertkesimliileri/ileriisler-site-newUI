@@ -124,7 +124,7 @@ const Footer = (props) => {
                     )}
                 </div>
                 <div className={styles.icons}>
-                    {footerNavigationData && footerNavigationData[0].socialMedia.map((post, index) =>
+                    {footerNavigationData && footerNavigationData[0].socialMedia && footerNavigationData[0].socialMedia.map((post, index) =>
                         <Link key={index} href={post.iconUrl}>
                             <Image
                                 src={urlFor(post.asset._ref).url()}
@@ -196,7 +196,7 @@ const Footer = (props) => {
                     <div className={styles.bottomRow}>
                         <p className={styles.trademark1}>{footerNavigationData && <>{"©" + footerNavigationData[0].name}</>}</p>
                         <div className={styles.wrapper}>
-                            {footerNavigationData && footerNavigationData[0].socialMedia.map((post, index) =>
+                            {footerNavigationData && footerNavigationData[0].socialMedia && footerNavigationData[0].socialMedia.map((post, index) =>
                                 <Link key={index} href={post.iconUrl}>
                                     <Image
                                         src={urlFor(post.asset._ref).url()}
