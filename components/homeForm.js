@@ -2,6 +2,9 @@ import React from 'react'
 import styles from  "./homeForm.module.css"
 import { useState } from 'react'
 import { sendHomeForm } from "../lib/homeFormApi";
+import { useRouter } from 'next/router';
+import en from '@/locales/en';
+import tr from '@/locales/tr';
 
 const HomeForm = (props) => {
 
@@ -19,6 +22,9 @@ const HomeForm = (props) => {
   const initState = {values: initialValues }
 
   const [state, setState] = useState(initState);
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === 'en' ? en : tr;
 
   const { values } = state;
   const [validation, setValidation] = useState({
@@ -68,31 +74,31 @@ const HomeForm = (props) => {
       <form method="POST" className={styles.form}>
         <div className={styles.row}>
           <div>
-            <label htmlFor="fname">First Name {displayRequired && !validation.fname ? <span>*</span> : undefined}</label>
+            <label htmlFor="fname">{t.formFname} {displayRequired && !validation.fname ? <span>*</span> : undefined}</label>
             <input className={styles.input} type="text" id="fname" value={values.fname} onChange={handleChange} name="fname" />
           </div>
           <div>
-            <label htmlFor="lname">Last Name {displayRequired && !validation.lname ? <span>*</span> : undefined}</label>
+            <label htmlFor="lname">{t.formLname} {displayRequired && !validation.lname ? <span>*</span> : undefined}</label>
             <input className={styles.input} type="text" id="lname" value={values.lname} onChange={handleChange} name="lname" />
           </div>
         </div>
         <div className={styles.row}>
           <div>
-            <label htmlFor="email">Email {displayRequired && !validation.email ? <span>*</span> : undefined}</label>
+            <label htmlFor="email">{t.formMail} {displayRequired && !validation.email ? <span>*</span> : undefined}</label>
             <input className={styles.input} type="email" id="email" value={values.email} onChange={handleChange} name="email" />
           </div>
           <div>
-            <label htmlFor="phone">Phone number (optional)</label>
+            <label htmlFor="phone">{t.formPhone}</label>
             <input className={styles.input} type="phone" id="phone" value={values.phone} onChange={handleChange} name="phone" />
           </div>
         </div>
         <div className={styles.row}>
           <div>
-            <label htmlFor="title">Title (optional)</label>
+            <label htmlFor="title">{t.formTitle}</label>
             <input className={styles.input} type="text" id="title" value={values.title} onChange={handleChange} name="title" />
           </div>
           <div>
-            <label htmlFor="company">Company (optional)</label>
+            <label htmlFor="company">{t.formCompany}</label>
             <input className={styles.input} type="text" id="company" value={values.company} onChange={handleChange} name="company" />
             <input className={styles.input} style={{display: "none"}} value={props.firstValue} onChange={handleChange} type="text" id="firstSelection" name="firstSelection" />
             <input className={styles.input} style={{display: "none"}} value={props.secondValue} onChange={handleChange} type="text" id="secondSelection" name="secondSelection" />
