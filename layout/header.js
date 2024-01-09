@@ -12,6 +12,7 @@ import { CgClose } from "@react-icons/all-files/cg/CgClose";
 import sanityClient from '@/sanity/lib/sanityClient';
 import imageUrlBuilder from '@sanity/image-url'
 import useCamelize from '@/hooks/useCamelize';
+import Image from 'next/image';
 
 const Header = (props) => {
 
@@ -103,7 +104,7 @@ const Header = (props) => {
     <div style={{ position: position }} className={styles.header}>
       <div className={styles.logo}>
         <Link href="/">
-          {navigationData && <img src={urlFor(navigationData[0].logo.asset._ref).url()} alt='logo'></img> }
+          {navigationData && <Image height={200} width={200} src={urlFor(navigationData[0].logo.asset._ref).url()} alt='logo'></Image> }
         </Link>
       </div>
       <div className={navStyle}>

@@ -119,10 +119,12 @@ const Footer = (props) => {
           <div className={styles.logo}>
             <Link href="/">
               {navigationData && (
-                <img
+                <Image
                   src={urlFor(navigationData[0].logo.asset._ref).url()}
                   alt="logo"
-                ></img>
+                  width={300}
+                  height={100}
+                ></Image>
               )}
             </Link>
           </div>
@@ -160,11 +162,13 @@ const Footer = (props) => {
             <div className={styles.mainColumn}>
             <Link href="/">
               {navigationData && (
-                <img
+                <Image
                   src={urlFor(navigationData[0].logo.asset._ref).url()}
                   alt="logo"
                   style={{paddingBottom: '16px'}}
-                ></img>
+                  width={200}
+                  height={100}
+                ></Image>
               )}
             </Link>
               <p style={{ paddingBottom: "19px" }} className={styles.text}>
